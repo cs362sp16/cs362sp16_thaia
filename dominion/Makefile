@@ -41,34 +41,34 @@ cardtest4: tests/cardtest4.c dominion.o rngs.o
 
 buildtests: unittest1 unittest2 unittest3 unittest4 cardtest1 cardtest2 cardtest3 cardtest4
 
-testsuite: buildtests playdom
-	./unittest1 >> results.out
-	echo "GCOV AFTER 1 TEST" >> results.out
-	gcov dominion.c >> results.out
-	./unittest2 >> results.out
-	echo "GCOV AFTER 2 TESTS" >> results.out
-	gcov dominion.c >> results.out
-	./unittest3 >> results.out
-	echo "GCOV AFTER 3 TESTS" >> results.out
-	gcov dominion.c >> results.out
-	./unittest4 >> results.out
-	echo "GCOV AFTER 4 TESTS" >> results.out
-	gcov dominion.c >> results.out
-	./cardtest1 >> results.out
-	echo "GCOV AFTER 5 TESTS" >> results.out
-	gcov dominion.c >> results.out
-	./cardtest2 >> results.out
-	echo "GCOV AFTER 6 TESTS" >> results.out
-	gcov dominion.c >> results.out
-	./cardtest3 >> results.out
-	echo "GCOV AFTER 7 TESTS" >> results.out
-	gcov dominion.c >> results.out
-	./cardtest4 >> results.out
-	echo "GCOV AFTER 8 TESTS" >> results.out
-	gcov dominion.c >> results.out
-	./playdom 2 >> results.out
-	echo "GCOV AFTER PLAYING A GAME" >> results.out
-	gcov dominion.c >> results.out
+unittestresults.out: buildtests playdom
+	./unittest1 >> unittestresults.out
+	echo "GCOV AFTER 1 TEST" >> unittestresults.out
+	gcov dominion.c >> unittestresults.out
+	./unittest2 >> unittestresults.out
+	echo "GCOV AFTER 2 TESTS" >> unittestresults.out
+	gcov dominion.c >> unittestresults.out
+	./unittest3 >> unittestresults.out
+	echo "GCOV AFTER 3 TESTS" >> unittestresults.out
+	gcov dominion.c >> unittestresults.out
+	./unittest4 >> unittestresults.out
+	echo "GCOV AFTER 4 TESTS" >> unittestresults.out
+	gcov dominion.c >> unittestresults.out
+	./cardtest1 >> unittestresults.out
+	echo "GCOV AFTER 5 TESTS" >> unittestresults.out
+	gcov dominion.c >> unittestresults.out
+	./cardtest2 >> unittestresults.out
+	echo "GCOV AFTER 6 TESTS" >> unittestresults.out
+	gcov dominion.c >> unittestresults.out
+	./cardtest3 >> unittestresults.out
+	echo "GCOV AFTER 7 TESTS" >> unittestresults.out
+	gcov dominion.c >> unittestresults.out
+	./cardtest4 >> unittestresults.out
+	echo "GCOV AFTER 8 TESTS" >> unittestresults.out
+	gcov dominion.c >> unittestresults.out
+	./playdom 2 >> unittestresults.out
+	echo "GCOV AFTER PLAYING A GAME" >> unittestresults.out
+	gcov dominion.c >> unittestresults.out
 
 all: playdom player
 
