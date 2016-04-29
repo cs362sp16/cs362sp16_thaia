@@ -1,12 +1,12 @@
 #include <stdio.h>
 #include "../dominion.h"
 
-// Test 3 - check that winners are set in getWinners()
+// Test 3 - check that winners are properly set in getWinners()
 
 int failed = 0;
 
 void assertTF(int b, char *msg){
-  if (b== 0){
+  if (b == 0){
     printf("FAILED ASSERTION: %s\n", msg);
     failed = 1;
   }
