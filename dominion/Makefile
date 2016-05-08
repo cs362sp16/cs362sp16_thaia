@@ -73,4 +73,4 @@ unittestresults.out: buildtests playdom
 all: playdom player
 
 clean:
-	rm -f *.o playdom.exe playdom test.exe test player unittest1 unittest2 unittest3 unittest4 cardtest1 cardtest2 cardtest3 cardtest4 player.exe testInit testInit.exe results.out *.gcov *.gcda *.gcno *.so *.a *.dSYM
+	rm -f *.o playdom.exe playdom test.exe test player unittest1 unittest2 unittest3 unittest4 cardtest1 cardtest2 cardtest3 cardtest4 player.exe testInit testInit.exe unittestresults.out *.gcov *.gcda *.gcno *.so *.a *.dSYM
