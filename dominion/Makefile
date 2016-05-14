@@ -48,6 +48,9 @@ randtestc1: tests/randomtestcard1.c dominion.o rngs.o
 randtestc2: tests/randomtestcard2.c dominion.o rngs.o
 	gcc -o randtestcard2 tests/randomtestcard2.c -g dominion.o rngs.o $(CFLAGS)
 
+randtestex: tests/extrarandomtest.c dominion.o rngs.o
+	gcc -o extrarandomtest tests/extrarandomtest.c -g dominion.o rngs.o $(CFLAGS)
+
 buildtests: unittest1 unittest2 unittest3 unittest4 cardtest1 cardtest2 cardtest3 cardtest4
 
 unittestresults.out: buildtests playdom
@@ -79,22 +82,27 @@ unittestresults.out: buildtests playdom
 	echo "GCOV AFTER PLAYING A GAME" >> unittestresults.out
 	gcov dominion.c >> unittestresults.out
 
-randcardtests: randtesta randtestc1 randtestc2
-	./randtestadventurer >> randomtestadventurer.out
+randcardtests: randtesta randtestc1 randtestc2 randtestex
+	./randtestadventurer 42 >> randomtestadventurer.out
 	echo "GCOV OF RANDOM TESTING: ADVENTURER" >> randomtestadventurer.out
 	gcov -f randomtestadventurer.c >> randomtestadventurer.out
 	echo "GCOV OF DOMINION" >> randomtestadventurer.out
 	gcov dominion.c >> randomtestadventurer.out
-	./randtestcard1 >> randomtestcard1.out
+	./randtestcard1  42>> randomtestcard1.out
 	echo "GCOV OF RANDOM TESTING: CUTPURSE" >> randomtestcard1.out
 	gcov -f randomtestcard1.c >> randomtestcard1.out
 	echo "GCOV OF DOMINION" >> randomtestcard1.out
 	gcov dominion.c >> randomtestcard1.out
-	./randtestcard2 >> randomtestcard2.out
-	echo "GCOV OF RANDOM TESTING: BARON" >> randomtestcard2.out
+	./randtestcard2 42 >> randomtestcard2.out
+	echo "GCOV OF RANDOM TESTING: SMITHY" >> randomtestcard2.out
 	gcov -f randomtestcard2.c >> randomtestcard2.out
 	echo "GCOV OF DOMINION" >> randomtestcard2.out
 	gcov dominion.c >> randomtestcard2.out
+	echo "GCOV OF RANDOM TESTING: BARON" >> extrarandomtest.out
+	./extrarandomtest 42 >> extrarandomtest.out
+	gcov -f extrarandomtest.c >> extrarandomtest.out
+	echo "GCOV OF DOMINION" >> extrarandomtest.out
+	gcov dominion.c >> extrarandomtest.out
 
 all: playdom player
 

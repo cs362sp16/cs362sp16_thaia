@@ -33,14 +33,14 @@ int main(int argc, char *argv[]){
 
   printf("``adventurer`` -- RANDOM TESTS START \n");
 
-  if (argc >=2){
+  if (argc >= 2){
     randSeed = atoi(argv[1]);
-  }else{
+  }
+  else{
     randSeed = rand();
   }
 
   numplayers = rand() % 2 + 2;
-  //randSeed = rand();
   initializeGame(numplayers, k, randSeed, &g);
 
   for (i = 0; i < numplayers; i++){

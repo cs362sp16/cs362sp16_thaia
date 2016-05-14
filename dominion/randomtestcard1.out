@@ -1,0 +1,27 @@
+``cutpurse`` -- RANDOM TESTS START 
+``cutpurse`` -- RANDOM TESTING COMPLETE 
+TEST SUCCESSFULLY COMPLETED
+
+GCOV OF RANDOM TESTING: CUTPURSE
+Function 'main'
+Lines executed:94.12% of 17
+
+Function 'checkasserts'
+Lines executed:100.00% of 4
+
+Function 'assertTF'
+Lines executed:60.00% of 5
+
+File 'tests/randomtestcard1.c'
+Lines executed:88.46% of 26
+Creating 'randomtestcard1.c.gcov'
+
+File '<built-in>'
+No executable lines
+Removing '<built-in>.gcov'
+
+GCOV OF DOMINION
+File 'dominion.c'
+Lines executed:23.89% of 565
+Creating 'dominion.c.gcov'
+

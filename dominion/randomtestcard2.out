@@ -1,0 +1,27 @@
+``smithy`` -- RANDOM TESTS START 
+``smithy`` -- RANDOM TESTING COMPLETE 
+TEST SUCCESSFULLY COMPLETED
+
+GCOV OF RANDOM TESTING: SMITHY
+Function 'main'
+Lines executed:93.75% of 16
+
+Function 'checkasserts'
+Lines executed:100.00% of 4
+
+Function 'assertTF'
+Lines executed:60.00% of 5
+
+File 'tests/randomtestcard2.c'
+Lines executed:88.00% of 25
+Creating 'randomtestcard2.c.gcov'
+
+File '<built-in>'
+No executable lines
+Removing '<built-in>.gcov'
+
+GCOV OF DOMINION
+File 'dominion.c'
+Lines executed:26.37% of 565
+Creating 'dominion.c.gcov'
+
