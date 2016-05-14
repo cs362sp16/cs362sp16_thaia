@@ -5,7 +5,7 @@
 #include "../dominion.h"
 #include "../rngs.h"
 
-// Random Test Adventurer
+// Random Test Baron
 
 int failed = 0;
 
@@ -23,32 +23,35 @@ void checkasserts(){
 }
 
 int main(){
-  int i, j, r, numplayers, randSeed;
+  int i, j, r, numplayers, randSeed, prevb, buys;
   int k[10] = {smithy, adventurer, gardens, embargo, cutpurse, mine, ambassador,
                outpost, baron, tribute};
   int choice[4];
   srand(time(NULL)); // Seed rng
-  
+
   struct gameState g;
 
-  printf("``adventurer`` -- RANDOM TESTS START \n");
+  printf("``baron`` -- RANDOM TESTS START \n");
 
-  numplayers = rand() % 2 + 2;
+  numplayers = rand() % 2 + 2;  // ensure at least 2 players
   randSeed = rand();
   initializeGame(numplayers, k, randSeed, &g);
 
   for (i = 0; i < numplayers; i++){
-    g.deckCount[i] = rand() % MAX_DECK;
     g.handCount[i] = rand() % MAX_HAND;
     g.discardCount[i] = rand() % MAX_HAND;
-    // Randomly generating choices to be played in cardEffect
+    // Generating choices to be used in cardEffect()
     for (j = 0; j < 3; j++){
       choice[j] = rand() % 2 + 1;
     }
-    r = cardEffect(adventurer, choice[0], choice[1], choice[2], &g, 0, 0);
-    assertTF(r == 0, "Adventurer played successfully\n");
+    prevb = g.numBuys;  // number of buys before baron is used
+    r = cardEffect(baron, choice[0], choice[1], choice[2], &g, 0, 0);
+    buys = g.numBuys; // # should increase by 1
+
+    assertTF(buys == prevb + 1, "Buys increased by 1\n"); 
+    assertTF(r == 0, "Baron played successfully\n");
   }
-  printf("``adventurer`` -- RANDOM TESTING COMPLETE \n");
+  printf("``baron`` -- RANDOM TESTING COMPLETE \n");
   
   checkasserts();
 }

@@ -5,7 +5,7 @@
 #include "../dominion.h"
 #include "../rngs.h"
 
-// Random Test Adventurer
+// Random Test Cutpurse
 
 int failed = 0;
 
@@ -18,7 +18,7 @@ void assertTF(int b, char *msg){
 
 void checkasserts(){
   if (!failed){
-    printf("TEST SUCCESSFULLY COMPLETED.\n\n");
+    printf("TEST SUCCESSFULLY COMPLETED\n\n");
   }
 }
 
@@ -28,27 +28,25 @@ int main(){
                outpost, baron, tribute};
   int choice[4];
   srand(time(NULL)); // Seed rng
-  
+
   struct gameState g;
 
-  printf("``adventurer`` -- RANDOM TESTS START \n");
+  printf("``cutpurse`` -- RANDOM TESTS START \n");
 
   numplayers = rand() % 2 + 2;
   randSeed = rand();
   initializeGame(numplayers, k, randSeed, &g);
 
   for (i = 0; i < numplayers; i++){
-    g.deckCount[i] = rand() % MAX_DECK;
     g.handCount[i] = rand() % MAX_HAND;
-    g.discardCount[i] = rand() % MAX_HAND;
-    // Randomly generating choices to be played in cardEffect
+    // Inner loop randomly generates choices from 1-3 for function cardEffect
     for (j = 0; j < 3; j++){
-      choice[j] = rand() % 2 + 1;
+      choice[i] = rand() % 2 + 1;
     }
-    r = cardEffect(adventurer, choice[0], choice[1], choice[2], &g, 0, 0);
-    assertTF(r == 0, "Adventurer played successfully\n");
+    r = cardEffect(cutpurse, choice[0], choice[1], choice[2], &g, 0, 0);
+    assertTF(r == 0, "Cutpurse played successfully\n");
   }
-  printf("``adventurer`` -- RANDOM TESTING COMPLETE \n");
+  printf("``cutpurse`` -- RANDOM TESTING COMPLETE \n");
   
   checkasserts();
 }
