@@ -22,7 +22,7 @@ void checkasserts(){
   }
 }
 
-int main(){
+int main(int argc, char *argv[]){
   int i, j, r, numplayers, randSeed, prevb, buys;
   int k[10] = {smithy, adventurer, gardens, embargo, cutpurse, mine, ambassador,
                outpost, baron, tribute};
@@ -33,8 +33,14 @@ int main(){
 
   printf("``baron`` -- RANDOM TESTS START \n");
 
+  if (argc >= 2){
+    randSeed = atoi(argv[1]);
+  }else{
+    randSeed = rand();
+  }
+
   numplayers = rand() % 2 + 2;  // ensure at least 2 players
-  randSeed = rand();
+  //randSeed = rand();
   initializeGame(numplayers, k, randSeed, &g);
 
   for (i = 0; i < numplayers; i++){

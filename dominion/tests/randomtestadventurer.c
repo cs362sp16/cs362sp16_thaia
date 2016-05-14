@@ -11,7 +11,7 @@ int failed = 0;
 
 void assertTF(int b, char *msg){
   if (b == 0){
-    printf("FAILED ASSERTION: %s\n", msg);
+    printf("FAILED ASSERTION: %s", msg);
     failed = 1;
   }
 }
@@ -22,7 +22,7 @@ void assertTF(int b, char *msg){
   }
 }*/
 
-int main(){
+int main(int argc, char *argv[]){
   int i, j, r, ff, numplayers, randSeed;
   int k[10] = {smithy, adventurer, gardens, embargo, cutpurse, mine, ambassador,
                outpost, baron, tribute};
@@ -33,8 +33,14 @@ int main(){
 
   printf("``adventurer`` -- RANDOM TESTS START \n");
 
+  if (argc >=2){
+    randSeed = atoi(argv[1]);
+  }else{
+    randSeed = rand();
+  }
+
   numplayers = rand() % 2 + 2;
-  randSeed = rand();
+  //randSeed = rand();
   initializeGame(numplayers, k, randSeed, &g);
 
   for (i = 0; i < numplayers; i++){
@@ -53,7 +59,7 @@ int main(){
   ff = cardEffect(adventurer, choice[0], choice[1], choice[2], &g, 0, 0);
   assertTF(ff = 0, "Adventurer played successfully\n");
 
-  printf("``adventurer`` -- RANDOM TESTING COMPLETE \n");
+  printf("``adventurer`` -- RANDOM TESTING COMPLETE \n\n");
   
   //failed = 0; // reset flag to 0 after ff -- otherwise checkasserts() fails
   //checkasserts();
@@ -67,5 +73,6 @@ int main(){
 
     So to avoid that, I'm returning zero here instead of using checkasserts()
     Note: I'm only making the change in this file */
+  
   return 0;
 }
