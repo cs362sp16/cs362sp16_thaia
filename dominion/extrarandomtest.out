@@ -1,0 +1,27 @@
+GCOV OF RANDOM TESTING: BARON
+``baron`` -- RANDOM TESTS START 
+``baron`` -- RANDOM TESTING COMPLETE 
+TEST SUCCESSFULLY COMPLETED.
+
+Function 'main'
+Lines executed:95.24% of 21
+
+Function 'checkasserts'
+Lines executed:100.00% of 4
+
+Function 'assertTF'
+Lines executed:60.00% of 5
+
+File 'tests/extrarandomtest.c'
+Lines executed:90.00% of 30
+Creating 'extrarandomtest.c.gcov'
+
+File '<built-in>'
+No executable lines
+Removing '<built-in>.gcov'
+
+GCOV OF DOMINION
+File 'dominion.c'
+Lines executed:29.03% of 565
+Creating 'dominion.c.gcov'
+
