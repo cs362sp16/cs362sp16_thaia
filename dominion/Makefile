@@ -82,17 +82,17 @@ unittestresults.out: buildtests playdom
 randcardtests: randtesta randtestc1 randtestc2
 	./randtestadventurer >> randomtestadventurer.out
 	echo "GCOV OF RANDOM TESTING: ADVENTURER" >> randomtestadventurer.out
-	gcov randomtestadventurer.c >> randomtestadventurer.out
+	gcov -f randomtestadventurer.c >> randomtestadventurer.out
 	echo "GCOV OF DOMINION" >> randomtestadventurer.out
 	gcov dominion.c >> randomtestadventurer.out
 	./randtestcard1 >> randomtestcard1.out
 	echo "GCOV OF RANDOM TESTING: CUTPURSE" >> randomtestcard1.out
-	gcov randomtestcard1.c >> randomtestcard1.out
+	gcov -f randomtestcard1.c >> randomtestcard1.out
 	echo "GCOV OF DOMINION" >> randomtestcard1.out
 	gcov dominion.c >> randomtestcard1.out
 	./randtestcard2 >> randomtestcard2.out
 	echo "GCOV OF RANDOM TESTING: BARON" >> randomtestcard2.out
-	gcov randomtestcard2.c >> randomtestcard2.out
+	gcov -f randomtestcard2.c >> randomtestcard2.out
 	echo "GCOV OF DOMINION" >> randomtestcard2.out
 	gcov dominion.c >> randomtestcard2.out
 
