@@ -32,7 +32,7 @@ int playerTurn(struct gameState *g, int num){
       actionCards++;
     }
   }
-  printf("Number of action cards in hand: %d\n", actionCards);
+  //printf("Number of action cards in hand: %d\n", actionCards);
 
   if (actionCards == 1){
     for (i = 0; i < g->handCount[num]; i++){
@@ -125,8 +125,8 @@ int main (int argc, char** argv) {
     printf("\nROUND %d \n", round);
     round++;
     for (i = 0; i < numPlayers; i++){
-      check = playerTurn(&g, i);
       printf("Player %d -- Score: %d\n", i, scoreFor(i, p));
+      check = playerTurn(&g, i);
     }
   }
   printf ("Finished game.\n\n");
