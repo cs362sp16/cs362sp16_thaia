@@ -1,354 +1,307 @@
-226a227,250
-> In the while loop
-> In the while loop
-> In the while loop
-> In the while loop
-> In the while loop
-> In the while loop
-> In the while loop
-> In the while loop
-> In the while loop
-> In the while loop
-> In the while loop
-> In the while loop
-> In the while loop
-> In the while loop
-> In the while loop
-> In the while loop
-> In the while loop
-> In the while loop
-> In the while loop
-> In the while loop
-> In the while loop
-> In the while loop
-> In the while loop
-> In the while loop
-232c256
-< Bought: 21
+29c29
+< Bought: 1
 ---
-> Bought: 26
-233a258
 > Bought: 0
-237c262
-< Bought: 0
----
-> Bought: 4
-241,243c266,267
-< Bought: 5
-< Player 1 -- Score: 1
-< Bought: 5
----
-> Bought: 10
-> Player 1 -- Score: 0
-245d268
-< Bought: 4
-250,254c273,279
-< Player 1 -- Score: 3
-< Bought: 21
-< Player 2 -- Score: 3
-< Bought: 21
-< Player 3 -- Score: -4
----
-> Bought: 5
-> Player 1 -- Score: 2
-> Bought: 0
-> Player 2 -- Score: 2
-> Bought: 5
-> Player 3 -- Score: -2
-> Bought: 0
-257,258c282
-< Player 0 -- Score: 4
-< Bought: 5
----
-> Player 0 -- Score: 3
-263,264c287,288
-< Player 3 -- Score: -2
-< Bought: 0
----
-> Player 3 -- Score: -3
-> Bought: 15
-268a293
-> Player 1 -- Score: 0
-270,272c295
-< Player 1 -- Score: 1
-< Bought: 7
+32c32
 < Player 2 -- Score: 5
 ---
-> Player 2 -- Score: 4
-274,275c297,298
-< Player 3 -- Score: -4
-< Bought: 0
+> Player 2 -- Score: 6
+40,41c40
+< Player 2 -- Score: 0
+< Bought: 20
 ---
-> Bought: 4
-> Player 3 -- Score: -3
-278,280c301,304
-< Player 0 -- Score: -1
-< Bought: 5
-< Player 1 -- Score: 0
+> Player 2 -- Score: 1
+44c43
+< Player 0 -- Score: 3
 ---
 > Player 0 -- Score: 0
-> Bought: 15
-> Player 1 -- Score: -3
-> Bought: 15
-282c306
-< Bought: 10
+51c50
+< Player 0 -- Score: 2
 ---
-> Bought: 0
-284d307
-< Bought: 15
-288,290d310
+> Player 0 -- Score: 0
+53,55c52
+< Player 1 -- Score: -1
+< Playing a card
 < Bought: 0
-< Player 1 -- Score: -2
-< Player 2 -- Score: 1
-292c312
-< Player 3 -- Score: 0
 ---
-> Player 1 -- Score: -4
-293a314,317
-> Player 2 -- Score: 0
-> Bought: 11
-> Player 3 -- Score: 0
-> Bought: 5
-296,298c320
-< Player 0 -- Score: 0
+> Player 1 -- Score: 0
+60c57
+< Player 0 -- Score: 2
+---
+> Player 0 -- Score: 1
+62,63c59,60
+< Player 1 -- Score: 1
+< Player 2 -- Score: 4
+---
+> Player 1 -- Score: 2
+> Player 2 -- Score: 5
+67,69c64,65
+< Player 0 -- Score: 2
+< Bought: 1
+< Player 1 -- Score: 3
+---
+> Player 0 -- Score: 3
+> Player 1 -- Score: 4
+71c67
+< Player 2 -- Score: 4
+---
+> Player 2 -- Score: 6
+75c71
+< Player 0 -- Score: 3
+---
+> Player 0 -- Score: 1
+78c74
+< Bought: 1
+---
+> Playing a card
+79a76
+> Bought: 0
+83,87d79
+< Bought: 18
+< Player 1 -- Score: 2
+< Playing a card
 < Bought: 4
+< Player 2 -- Score: 3
+88a81,83
+> Player 1 -- Score: 2
+> Bought: 15
+> Player 2 -- Score: 2
+91,93c86,89
+< Player 0 -- Score: 4
+< Bought: 4
+< Player 1 -- Score: 2
+---
+> Player 0 -- Score: 3
+> Bought: 0
+> Player 1 -- Score: 5
+> Player 2 -- Score: 4
+95d90
+< Player 2 -- Score: 3
+98,102c93,96
+< Player 0 -- Score: 8
+< Bought: 1
+< Player 1 -- Score: 3
+< Bought: 1
+< Player 2 -- Score: 0
+---
+> Player 0 -- Score: 5
+> Player 1 -- Score: 1
+> Bought: 20
+> Player 2 -- Score: 1
+106,109c100,103
+< Player 0 -- Score: 2
+< Bought: 4
+< Player 1 -- Score: 4
+< Bought: 4
+---
+> Player 0 -- Score: 1
+> Bought: 20
+> Player 1 -- Score: 3
+> Bought: 20
+111c105
+< Bought: 4
+---
+> Bought: 5
+114,115c108
+< Player 0 -- Score: 5
+< Bought: 20
+---
+> Player 0 -- Score: 2
+117,118c110
+< Player 2 -- Score: 3
+< Bought: 15
+---
+> Player 2 -- Score: 4
+121,123c113,116
+< Player 0 -- Score: 5
+< Bought: 18
+< Player 1 -- Score: 0
+---
+> Player 0 -- Score: 1
+> Bought: 4
+> Player 1 -- Score: 2
+> Playing a card
+125,126c118,119
+< Player 2 -- Score: 1
+< Bought: 1
+---
+> Player 2 -- Score: -1
+> Bought: 15
+130,131c123,124
+< Bought: 0
+< Player 1 -- Score: 3
+---
+> Bought: 20
+> Player 1 -- Score: 2
+133,134c126,127
+< Player 2 -- Score: 4
+< Bought: 0
+---
+> Player 2 -- Score: 1
+> Bought: 20
+137,141c130,133
+< Player 0 -- Score: -1
+< Bought: 4
+< Player 1 -- Score: 2
+< Player 2 -- Score: 1
+< Bought: 25
+---
+> Player 0 -- Score: 2
+> Bought: 0
+> Player 1 -- Score: 1
+> Player 2 -- Score: 4
+144,148c136,139
+< Player 0 -- Score: 3
+< Player 1 -- Score: 2
+< Bought: 0
+< Player 2 -- Score: 5
+< Bought: 5
+---
+> Player 0 -- Score: 1
+> Player 1 -- Score: 1
+> Player 2 -- Score: 4
+> Bought: 20
+151c142,143
+< Player 0 -- Score: 2
+---
+> Player 0 -- Score: -1
+> Playing a card
+153c145,146
+< Player 1 -- Score: 3
+---
+> Player 1 -- Score: 0
+> Playing a card
+158c151
+< Player 0 -- Score: 2
+---
+> Player 0 -- Score: 1
+160,161c153,155
+< Player 1 -- Score: 1
+< Player 2 -- Score: 1
+---
+> Player 1 -- Score: 0
+> Playing a card
+> Player 2 -- Score: 3
+165,168c159,161
+< Player 0 -- Score: 3
+< Bought: 25
+< Player 1 -- Score: -3
+< Player 2 -- Score: 0
+---
+> Player 0 -- Score: 0
+> Player 1 -- Score: 1
+> Playing a card
+169a163,164
+> Player 2 -- Score: -1
+> Playing a card
+172,173c167,171
+< Player 0 -- Score: 2
+< Player 1 -- Score: 3
+---
+> Player 0 -- Score: 1
+> Bought: 4
+> Player 1 -- Score: -2
+> Bought: 5
+> Player 2 -- Score: 0
+175,176d172
+< Player 2 -- Score: -2
+< Bought: 20
+180,181c176,179
+< Bought: 1
+< Player 1 -- Score: 1
+---
+> Playing a card
+> Player 1 -- Score: 0
+> Playing a card
+> Bought: 4
+183d180
+< Bought: 5
+186,190c183,187
+< Player 0 -- Score: 4
+< Bought: 20
+< Player 1 -- Score: 2
+< Player 2 -- Score: -2
+< Playing a card
+---
+> Player 0 -- Score: 2
+> Bought: 5
+> Player 1 -- Score: 0
+> Bought: 0
+> Player 2 -- Score: 1
+194c191
+< Player 0 -- Score: 4
+---
+> Player 0 -- Score: 1
+196c193
+< Player 1 -- Score: 3
+---
+> Player 1 -- Score: -1
+198c195
+< Player 2 -- Score: -2
+---
+> Player 2 -- Score: -1
+202,205d198
+< Bought: 0
+< Player 1 -- Score: 1
+< Player 2 -- Score: -2
+< Playing a card
+206a200,203
+> Player 1 -- Score: -2
+> Bought: 5
+> Player 2 -- Score: 1
+> Bought: 0
+209,213c206
+< Player 0 -- Score: 4
+< Bought: 4
+< Player 1 -- Score: 1
+< Bought: 4
+< Player 2 -- Score: -3
+---
+> Player 0 -- Score: 1
+214a208,211
+> Bought: 18
+> Player 1 -- Score: 0
+> Player 2 -- Score: 2
+> Bought: 25
+217,225c214,217
+< Player 0 -- Score: 0
+< Player 1 -- Score: 3
+< Player 2 -- Score: -4
+< Bought: 0
+< 
+< ROUND 29 
+< Player 0 -- Score: 4
+< Bought: 18
 < Player 1 -- Score: -1
 ---
 > Player 0 -- Score: 2
-300c322,324
-< Player 2 -- Score: 2
----
-> Player 1 -- Score: -6
-> Bought: 0
-> Player 2 -- Score: 1
-306,307c330,337
-< Bought: 0
-< Player 3 -- Score: -8
----
-> In the while loop
-> In the while loop
-> In the while loop
-> In the while loop
-> In the while loop
-> In the while loop
-> Bought: 4
-> Player 3 -- Score: -4
-311,312c341,343
-< Player 0 -- Score: 3
-< Player 1 -- Score: 1
----
-> Player 0 -- Score: 4
-> Bought: 5
-> Player 1 -- Score: 2
-316,317c347,348
-< Player 3 -- Score: -9
-< Bought: 4
----
-> Player 3 -- Score: -6
-> Bought: 5
-320c351
-< Player 0 -- Score: 1
----
-> Player 0 -- Score: 2
-324,325c355,361
-< Bought: 15
-< Player 1 -- Score: 2
----
-> In the while loop
-> In the while loop
-> In the while loop
-> In the while loop
-> Bought: 5
+> Bought: 1
 > Player 1 -- Score: -2
-> Bought: 0
-327,328c363,364
-< Bought: 15
-< Player 3 -- Score: -1
----
-> Bought: 21
-> Player 3 -- Score: -3
-332c368
-< Player 0 -- Score: -1
----
-> Player 0 -- Score: 1
-337a374,384
-> Player 1 -- Score: -4
-> Bought: 10
-> Player 2 -- Score: 4
-> Bought: 0
-> Player 3 -- Score: -3
-> 
-> ROUND 33 
-> Player 0 -- Score: 1
-> Player 1 -- Score: -6
-> Player 2 -- Score: 2
 > Playing a card
-346a394,405
-> Bought: 5
-> Player 3 -- Score: -4
-> Bought: 5
-> 
-> ROUND 34 
-> Player 0 -- Score: 4
-> Bought: 15
-> Player 1 -- Score: -8
-> Player 2 -- Score: -1
-> Bought: 17
-> Player 3 -- Score: -6
-> Playing a card
-347a407,422
-> 
-> ROUND 35 
-> Player 0 -- Score: 3
-> Bought: 11
-> Player 1 -- Score: -10
-> Player 2 -- Score: -1
-> Bought: 10
-> Player 3 -- Score: -4
-> 
-> ROUND 36 
-> Player 0 -- Score: 5
-> Bought: 4
-> Player 1 -- Score: -2
-> Bought: 4
-> Player 2 -- Score: -1
-> Playing a card
-350a426,434
-> Player 3 -- Score: 0
-> Bought: 11
-> Bought: 4
-> 
-> ROUND 37 
-> Player 0 -- Score: 5
-> Bought: 2
-> Player 1 -- Score: -4
-> Playing a card
-353,364c437,440
-< In the while loop
-< In the while loop
-< In the while loop
-< In the while loop
-< In the while loop
-< In the while loop
-< In the while loop
-< Player 1 -- Score: -2
-< Player 2 -- Score: 4
-< Bought: 0
-< Player 3 -- Score: -5
-< Bought: 0
----
-> Player 2 -- Score: 2
-> Bought: 5
-> Player 3 -- Score: -3
-> Bought: 21
-366,367c442,447
-< ROUND 33 
+227,237c219
+< Player 2 -- Score: -6
+< 
+< ROUND 30 
 < Player 0 -- Score: 0
----
-> ROUND 38 
-> Player 0 -- Score: 11
-> Bought: 4
-> Player 1 -- Score: -3
-> Bought: 4
-> Player 2 -- Score: 0
-369,370c449,453
-< Player 1 -- Score: -2
-< Player 2 -- Score: 2
----
-> Player 3 -- Score: -4
-> Bought: 4
-> 
-> ROUND 39 
-> Player 0 -- Score: 0
-376,377c459,465
-< In the while loop
-< Player 3 -- Score: -8
----
-> Bought: 2
-> Bought: 4
-> Player 1 -- Score: -4
-> Player 2 -- Score: 3
-> Bought: 26
-> Player 3 -- Score: -6
-> Bought: 4
-379,381c467,468
-< ROUND 34 
-< Player 0 -- Score: -1
 < Bought: 5
----
-> ROUND 40 
-> Player 0 -- Score: 5
-382a470,473
-> Bought: 4
-> Player 2 -- Score: 5
-> Bought: 4
-> Player 3 -- Score: -8
-384,386d474
-< Player 2 -- Score: 1
-< Bought: 15
-< Player 3 -- Score: -9
-388,392c476,479
-< ROUND 35 
-< Player 0 -- Score: 1
 < Player 1 -- Score: 2
-< Bought: 2
-< Player 2 -- Score: 0
----
-> ROUND 41 
-> Player 0 -- Score: 11
-> Player 1 -- Score: -5
-> Player 2 -- Score: 3
-396,406c483,485
-< Player 3 -- Score: -10
+< Player 2 -- Score: -5
 < Bought: 5
 < 
-< ROUND 36 
-< Player 0 -- Score: 0
-< Player 1 -- Score: 0
-< Bought: 4
-< Player 2 -- Score: -1
-< Bought: 5
-< Player 3 -- Score: -2
-< Bought: 4
----
-> In the while loop
-> In the while loop
-> Player 3 -- Score: 0
-408,409c487,491
-< ROUND 37 
+< ROUND 31 
 < Player 0 -- Score: 1
 ---
-> ROUND 42 
-> Player 0 -- Score: 9
-> Bought: 11
-> Player 1 -- Score: -7
-> Player 2 -- Score: -2
-411,414c493,494
+> Player 2 -- Score: 0
+239,250d220
 < Player 1 -- Score: 2
-< Player 2 -- Score: 1
-< Bought: 15
-< Player 3 -- Score: -6
----
-> Player 3 -- Score: 0
-> Bought: 21
-416,417c496,499
-< ROUND 38 
-< Player 0 -- Score: 0
----
-> ROUND 43 
-> Player 0 -- Score: 11
-> Bought: 26
-> Player 1 -- Score: -3
-419,421d500
-< Bought: 21
-< Player 1 -- Score: 3
-< Bought: 10
-423,424c502,506
-< Bought: 15
-< Player 3 -- Score: -8
----
-> Playing a card
-> In the while loop
-> In the while loop
-> Player 3 -- Score: -3
-> Bought: 4
+< Bought: 20
+< Player 2 -- Score: -4
+< Bought: 4
+< 
+< ROUND 32 
+< Player 0 -- Score: 3
+< Bought: 4
+< Player 1 -- Score: 0
+< Bought: 20
+< Player 2 -- Score: -4
+< Playing a card
