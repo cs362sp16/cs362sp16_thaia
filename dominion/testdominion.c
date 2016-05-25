@@ -1,4 +1,5 @@
 #include "dominion.h"
+#include "interface.h"
 #include <stdio.h>
 #include "rngs.h"
 #include <stdlib.h>
@@ -6,19 +7,9 @@
 #include <math.h>
 #include <time.h>
 
-/* PART 1 
- *
- * Write a random tester that plays, given a seed as an argument, a complete
- * game of Dominion w/ a random number of players (from 2-4) and a random set
- * of kingdom cards
- *
- * KEEP IN MIND - Implementation should work, AI does not have to be "good"
- *
- */
-
 // Print pointer to array
 void printArr(int *ptr, size_t length){
-  //for statement to print values using array
+  //for statement to print array values
   size_t i = 0;
   printf("cards:");
   for (i = 0; i < length; ++i){
@@ -27,24 +18,71 @@ void printArr(int *ptr, size_t length){
   printf("\n");
 }
 
-// Print pointer to string
-/*void printString(const char *ptr){
-  for ( ; *ptr != NULL; ++ptr){
-    printf("%c", *ptr);
-  }
-  printf("\n");
-}*/
+int playerTurn(struct gameState *g, int num){
+  int i, j, handPos, actionCards, choice1, choice2, choice3;
 
-int genCard(){
-  return rand() % (treasure_map + 1);
+  actionCards = 0;
+
+  //printHand(num, g);
+  //printDeck(num, g);
+
+  // ACTION PHASE
+  for (i = 0; i < g->handCount[num]; i++){
+    if (g->hand[num][i] > 6){  // cards with value 7+ are action cards
+      actionCards++;
+    }
+  }
+  printf("Number of action cards in hand: %d\n", actionCards);
+
+  if (actionCards == 1){
+    for (i = 0; i < g->handCount[num]; i++){
+      if (g->hand[num][i] > 6){
+        choice1 = rand() % g->handCount[num]; 
+        choice2 = rand() % g->handCount[num];
+        choice3 = rand() % g->handCount[num];
+        playCard(i, choice1, choice2, choice3, g);
+      }
+    }
+  }
+  j = 0;
+  
+  if (actionCards > 1){
+    printf("Playing a card\n");
+    choice1 = rand() % g->handCount[num]; 
+    choice2 = rand() % g->handCount[num];
+    choice3 = rand() % g->handCount[num];
+
+    while(g->numActions > 0){
+      printf("In the while loop\n");
+      j++;
+      if (j > 25) break;  // Break out of loop after 25 unsuccessful tries
+      handPos = rand() % g->handCount[num];
+      playCard(handPos, choice1, choice2, choice3, g); 
+    }
+  }
+
+  // BUY PHASE
+  //printSupply(g);
+  for (i = 0; i < 10; i++){
+    handPos = rand() % (treasure_map + 1);
+    if (-1 != buyCard(handPos, g))
+      printf("Bought: %d\n", handPos);
+  }
+  //printDiscard(num, g);
+  endTurn(g);
+
+  return 0;
 }
 
 int main (int argc, char** argv) {
-  int i, j, card, dup, randSeed;
+  int i, j, card, check, dup, randSeed, round;
   struct gameState g;
   struct gameState *p = &g;
 
+  srand(time(NULL));
+
   int k[10];  // declare hand
+  int numPlayers = rand() % 3 + 2;  // Generate random # of players
 
   // Seed the game
   if (argc >= 2){
@@ -54,12 +92,10 @@ int main (int argc, char** argv) {
     exit(EXIT_FAILURE);
   }
 
-  srand(time(NULL));
-
   // Populate players' hand
   for (i = 0; i < 10; i++){
     do{
-      card = genCard();
+      card = rand() % (treasure_map + 1);
       // 'feast' and 'tribute' are broken so I'm not gonna deal until I get
       // around to fixing them
       if (card == feast || card == tribute) continue;
@@ -72,139 +108,28 @@ int main (int argc, char** argv) {
     }while(dup != 0);
     k[i] = card;
   }
-  printArr(k, 10);  // Check that unique cards are unique
+  // printArr(k, 10);  // Check that unique cards are unique
   printf ("Starting game.\n");
   
-  initializeGame(2, k, atoi(argv[1]), p);
+  check = initializeGame(numPlayers, k, randSeed, p);
+  if (check != 0){
+    printf("Error in initialization\n");
+    exit(EXIT_FAILURE);
+  } 
+  printf("Number of players: %d\n", numPlayers);
 
+  round = 0;
   // Game ends when either a stack of Province cards is emptied OR
   // three supply piles are at zero
-
   while(!isGameOver(p)){
-
+    printf("\nROUND %d \n", round);
+    round++;
+    for (i = 0; i < numPlayers; i++){
+      check = playerTurn(&g, i);
+      printf("Player %d -- Score: %d\n", i, scoreFor(i, p));
+    }
   }
-
-  /*
-  int money = 0;
-  int smithyPos = -1;
-  int adventurerPos = -1;
-  int i=0;
-
-  int numSmithies = 0;
-  int numAdventurers = 0;
-
-  while (!isGameOver(p)) {
-    money = 0;
-    smithyPos = -1;
-    adventurerPos = -1;
-    for (i = 0; i < numHandCards(p); i++) {
-      if (handCard(i, p) == copper)
-    money++;
-      else if (handCard(i, p) == silver)
-    money += 2;
-      else if (handCard(i, p) == gold)
-    money += 3;
-      else if (handCard(i, p) == smithy)
-    smithyPos = i;
-      else if (handCard(i, p) == adventurer)
-    adventurerPos = i;
-    }
-
-    if (whoseTurn(p) == 0) {
-      if (smithyPos != -1) {
-        printf("0: smithy played from position %d\n", smithyPos); 
-	playCard(smithyPos, -1, -1, -1, p); 
-	printf("smithy played.\n");
-	money = 0;
-	i=0;
-	while(i<numHandCards(p)){
-	  if (handCard(i, p) == copper){
-	    playCard(i, -1, -1, -1, p);
-	    money++;
-	  }
-	  else if (handCard(i, p) == silver){
-	    playCard(i, -1, -1, -1, p);
-	    money += 2;
-	  }
-	  else if (handCard(i, p) == gold){
-	    playCard(i, -1, -1, -1, p);
-	    money += 3;
-	  }
-	  i++;
-	}
-      }
-
-      if (money >= 8) {
-        printf("0: bought province\n"); 
-        buyCard(province, p);
-      }
-      else if (money >= 6) {
-        printf("0: bought gold\n"); 
-        buyCard(gold, p);
-      }
-      else if ((money >= 4) && (numSmithies < 2)) {
-        printf("0: bought smithy\n"); 
-        buyCard(smithy, p);
-        numSmithies++;
-      }
-      else if (money >= 3) {
-        printf("0: bought silver\n"); 
-        buyCard(silver, p);
-      }
-
-      printf("0: end turn\n");
-      endTurn(p);
-    }
-    else {
-      if (adventurerPos != -1) {
-        printf("1: adventurer played from position %d\n", adventurerPos);
-	playCard(adventurerPos, -1, -1, -1, p); 
-	money = 0;
-	i=0;
-	while(i<numHandCards(p)){
-	  if (handCard(i, p) == copper){
-	    playCard(i, -1, -1, -1, p);
-	    money++;         
-	  }
-	  else if (handCard(i, p) == silver){
-	    playCard(i, -1, -1, -1, p);
-	    money += 2;
-	  }
-	  else if (handCard(i, p) == gold){
-	    playCard(i, -1, -1, -1, p);
-	    money += 3;
-	  }
-	  i++;
-	}
-      }
-
-      if (money >= 8) {
-        printf("1: bought province\n");
-        buyCard(province, p);
-      }
-      else if ((money >= 6) && (numAdventurers < 2)) {
-        printf("1: bought adventurer\n");
-	buyCard(adventurer, p);
-	numAdventurers++;
-      }else if (money >= 6){
-        printf("1: bought gold\n");
-	    buyCard(gold, p);
-        }
-      else if (money >= 3){
-        printf("1: bought silver\n");
-	    buyCard(silver, p);
-      }
-      printf("1: endTurn\n");
-      
-      endTurn(p);      
-    }
-
-      printf ("Player 0: %d\nPlayer 1: %d\n", scoreFor(0, p), scoreFor(1, p));
-	    
-  } // end of While*/
-
-  printf ("Finished game.\n");
-  printf ("Player 0: %d\nPlayer 1: %d\n", scoreFor(0, p), scoreFor(1, p));
+  printf ("Finished game.\n\n");
 
   return 0;
 }
