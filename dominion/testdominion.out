@@ -1,323 +1,261 @@
 Starting game.
-Number of players: 2
+Number of players: 4
 
 ROUND 0 
 Player 0 -- Score: 2
-Bought: 0
+Bought: 4
 Player 1 -- Score: 2
-Bought: 16
+Player 2 -- Score: 2
+Bought: 0
+Player 3 -- Score: 3
 
 ROUND 1 
-Player 0 -- Score: 3
-Bought: 4
-Player 1 -- Score: 5
+Player 0 -- Score: 4
+Bought: 1
+Player 1 -- Score: 4
+Bought: 0
+Player 2 -- Score: 4
+Player 3 -- Score: 3
 Bought: 0
 
 ROUND 2 
-Player 0 -- Score: 0
-Bought: 1
+Player 0 -- Score: 1
+Bought: 22
 Player 1 -- Score: 1
-Bought: 1
+Bought: 22
+Player 2 -- Score: 1
+Bought: 4
+Player 3 -- Score: 2
+Bought: 20
 
 ROUND 3 
 Player 0 -- Score: 5
+Bought: 20
+Player 1 -- Score: 3
+Bought: 22
+Player 2 -- Score: 4
+Bought: 20
+Player 3 -- Score: 2
 Bought: 4
-Player 1 -- Score: 5
-Bought: 15
 
 ROUND 4 
 Player 0 -- Score: 3
-Bought: 4
-Player 1 -- Score: 1
-Bought: 15
+Player 1 -- Score: 2
+Bought: 16
+Player 2 -- Score: 0
+Player 3 -- Score: 2
+Bought: 0
 
 ROUND 5 
-Player 0 -- Score: 3
-Bought: 10
-Player 1 -- Score: 4
+Player 0 -- Score: 4
+Bought: 22
+Player 1 -- Score: 3
+Playing a card
+In the while loop
+In the while loop
+Bought: 1
+Player 2 -- Score: 3
+Bought: 20
+Player 3 -- Score: 1
+Bought: 4
 
 ROUND 6 
 Player 0 -- Score: 0
-Player 1 -- Score: 1
 Bought: 0
+Player 1 -- Score: 1
+Bought: 22
+Player 2 -- Score: -1
+Bought: 20
+Player 3 -- Score: 2
+Bought: 22
 
 ROUND 7 
 Player 0 -- Score: 3
-Bought: 4
+Bought: 0
 Player 1 -- Score: 4
-Playing a card
-In the while loop
 Bought: 1
+Player 2 -- Score: 2
+Bought: 22
+Player 3 -- Score: 2
+Bought: 22
 
 ROUND 8 
-Player 0 -- Score: 6
-Bought: 16
-Player 1 -- Score: 6
-Bought: 1
+Player 0 -- Score: 3
+Player 1 -- Score: 0
+Bought: 9
+Player 2 -- Score: 0
+Bought: 22
+Player 3 -- Score: 1
+Bought: 22
 
 ROUND 9 
-Player 0 -- Score: 2
+Player 0 -- Score: 3
+Bought: 1
+Player 1 -- Score: 4
 Bought: 4
-Player 1 -- Score: -1
-Bought: 0
-Bought: 18
+Player 2 -- Score: 1
+Bought: 4
+Player 3 -- Score: 1
 
 ROUND 10 
-Player 0 -- Score: 3
-Playing a card
-In the while loop
-In the while loop
-In the while loop
-In the while loop
-In the while loop
-In the while loop
-In the while loop
-In the while loop
-In the while loop
-In the while loop
-In the while loop
-In the while loop
-In the while loop
-In the while loop
-In the while loop
-In the while loop
-In the while loop
-In the while loop
-In the while loop
-In the while loop
-In the while loop
-In the while loop
-In the while loop
-In the while loop
-In the while loop
-In the while loop
-Bought: 0
-Player 1 -- Score: 5
+Player 0 -- Score: 5
+Bought: 1
+Player 1 -- Score: 12
+Bought: 1
+Player 2 -- Score: 1
+Bought: 5
+Player 3 -- Score: 2
 
 ROUND 11 
-Player 0 -- Score: 4
-Player 1 -- Score: 9
+Player 0 -- Score: 2
+Player 1 -- Score: 2
+Bought: 4
+Player 2 -- Score: 1
+Playing a card
+In the while loop
 Bought: 0
+Player 3 -- Score: 3
+Bought: 4
 
 ROUND 12 
-Player 0 -- Score: 0
+Player 0 -- Score: 7
 Bought: 5
-Player 1 -- Score: 1
+Player 1 -- Score: 7
+Bought: 16
+Player 2 -- Score: 0
+Bought: 1
+Player 3 -- Score: 6
+Bought: 4
 
 ROUND 13 
-Player 0 -- Score: 0
-Player 1 -- Score: 3
+Player 0 -- Score: 6
+Player 1 -- Score: 14
 Bought: 4
-Bought: 4
+Player 2 -- Score: 0
+Bought: 20
+Player 3 -- Score: -1
+Bought: 12
 
 ROUND 14 
-Player 0 -- Score: 4
+Player 0 -- Score: 3
 Player 1 -- Score: 5
+Bought: 0
+Player 2 -- Score: 1
 Bought: 4
+Player 3 -- Score: 1
 
 ROUND 15 
-Player 0 -- Score: -1
-Bought: 5
-Player 1 -- Score: 5
+Player 0 -- Score: 5
 Bought: 4
+Player 1 -- Score: 9
+Player 2 -- Score: 3
+Bought: 12
+Player 3 -- Score: 7
 
 ROUND 16 
-Player 0 -- Score: 2
-Bought: 2
-Player 1 -- Score: 1
+Player 0 -- Score: 8
+Bought: 5
+Player 1 -- Score: 10
+Player 2 -- Score: 1
+Player 3 -- Score: -1
+Bought: 20
 
 ROUND 17 
-Player 0 -- Score: 5
-Player 1 -- Score: 3
-Bought: 4
+Player 0 -- Score: 10
+Bought: 0
+Player 1 -- Score: 15
+Playing a card
+In the while loop
+In the while loop
+In the while loop
+In the while loop
+In the while loop
+Bought: 0
+Player 2 -- Score: 2
+Bought: 20
+Player 3 -- Score: 1
+Bought: 0
 
 ROUND 18 
-Player 0 -- Score: 8
-Bought: 0
-Player 1 -- Score: 5
+Player 0 -- Score: 4
+Bought: 4
+Player 1 -- Score: 4
+Bought: 16
+Player 2 -- Score: 0
+Bought: 16
+Player 3 -- Score: 5
+Bought: 4
 
 ROUND 19 
-Player 0 -- Score: -1
-Player 1 -- Score: 2
-Bought: 0
+Player 0 -- Score: 4
+Bought: 4
+Player 1 -- Score: 4
+Bought: 4
+Player 2 -- Score: 1
+Bought: 16
+Player 3 -- Score: 6
+Bought: 5
 
 ROUND 20 
-Player 0 -- Score: 1
+Player 0 -- Score: 5
 Bought: 0
-Player 1 -- Score: 4
+Player 1 -- Score: 10
+Player 2 -- Score: 1
 Bought: 4
+Player 3 -- Score: -2
+Bought: 16
 
 ROUND 21 
-Player 0 -- Score: 3
+Player 0 -- Score: 5
+Player 1 -- Score: 14
+Bought: 20
+Player 2 -- Score: 4
+Playing a card
+In the while loop
+In the while loop
+In the while loop
+In the while loop
+In the while loop
+In the while loop
+In the while loop
+In the while loop
+In the while loop
+In the while loop
+In the while loop
+In the while loop
+In the while loop
+In the while loop
+In the while loop
+In the while loop
+In the while loop
+In the while loop
+In the while loop
+In the while loop
+In the while loop
+In the while loop
+In the while loop
+In the while loop
+In the while loop
+In the while loop
 Bought: 4
-Player 1 -- Score: 1
+Player 3 -- Score: 2
 
 ROUND 22 
-Player 0 -- Score: 7
-Bought: 15
-Player 1 -- Score: 6
+Player 0 -- Score: -1
 Bought: 4
+Player 1 -- Score: 16
+Player 2 -- Score: 4
+Bought: 9
+Player 3 -- Score: 10
 
 ROUND 23 
-Player 0 -- Score: -2
-Player 1 -- Score: 3
-Bought: 10
-
-ROUND 24 
-Player 0 -- Score: -1
-Playing a card
-In the while loop
-In the while loop
-In the while loop
-In the while loop
-In the while loop
-In the while loop
-In the while loop
-In the while loop
-In the while loop
-In the while loop
-Player 1 -- Score: 1
-Bought: 5
-
-ROUND 25 
-Player 0 -- Score: 3
-Player 1 -- Score: 3
-Bought: 0
-
-ROUND 26 
 Player 0 -- Score: 4
-Bought: 2
-Player 1 -- Score: 4
-Bought: 4
-
-ROUND 27 
-Player 0 -- Score: 11
-Bought: 4
-Player 1 -- Score: 4
-Bought: 4
-
-ROUND 28 
-Player 0 -- Score: 1
-Bought: 16
-Player 1 -- Score: 2
-Bought: 10
-
-ROUND 29 
-Player 0 -- Score: 5
-Bought: 4
-Player 1 -- Score: 0
-Bought: 18
-
-ROUND 30 
-Player 0 -- Score: 8
-Bought: 16
-Player 1 -- Score: -1
-
-ROUND 31 
-Player 0 -- Score: 7
-Player 1 -- Score: 4
-
-ROUND 32 
-Player 0 -- Score: 13
-Bought: 5
-Player 1 -- Score: 2
-
-ROUND 33 
-Player 0 -- Score: 0
-Bought: 18
-Bought: 4
-Player 1 -- Score: 3
-Bought: 4
-
-ROUND 34 
-Player 0 -- Score: 2
-Playing a card
-In the while loop
-In the while loop
-In the while loop
-In the while loop
-In the while loop
-In the while loop
-In the while loop
-In the while loop
-In the while loop
-In the while loop
-In the while loop
-In the while loop
-In the while loop
-In the while loop
-In the while loop
-In the while loop
-In the while loop
-In the while loop
-In the while loop
-In the while loop
-In the while loop
-In the while loop
-In the while loop
-In the while loop
-In the while loop
-In the while loop
 Bought: 16
 Player 1 -- Score: 1
-Bought: 16
-
-ROUND 35 
-Player 0 -- Score: 8
-Bought: 18
-Player 1 -- Score: 3
-Bought: 16
-
-ROUND 36 
-Player 0 -- Score: 9
-Player 1 -- Score: 6
-
-ROUND 37 
-Player 0 -- Score: 15
-Player 1 -- Score: 4
-Playing a card
-In the while loop
-In the while loop
-In the while loop
-In the while loop
-In the while loop
-In the while loop
-In the while loop
-In the while loop
-In the while loop
-In the while loop
-In the while loop
-In the while loop
-In the while loop
-In the while loop
-In the while loop
-In the while loop
-In the while loop
-In the while loop
-In the while loop
-In the while loop
-In the while loop
-In the while loop
-In the while loop
-In the while loop
-In the while loop
-In the while loop
-Bought: 4
-
-ROUND 38 
-Player 0 -- Score: 15
-Bought: 10
-Player 1 -- Score: 6
-Playing a card
-In the while loop
-
-ROUND 39 
-Player 0 -- Score: 0
-Bought: 16
-Player 1 -- Score: -1
-Playing a card
-In the while loop
-In the while loop
+Player 2 -- Score: 1
+Bought: 5
+Player 3 -- Score: 10
+Bought: 20
 Finished game.
 
 GCOV OF RANDOM TESTER -- 1 RUN
@@ -327,10 +265,10 @@ Creating 'testdominion.c.gcov'
 
 GCOV OF DOMINION
 File 'dominion.c'
-Lines executed:50.44% of 565
+Lines executed:52.04% of 565
 Creating 'dominion.c.gcov'
 
 File 'dominion.c'
-Lines executed:64.96% of 565
+Lines executed:61.59% of 565
 Creating 'dominion.c.gcov'
 

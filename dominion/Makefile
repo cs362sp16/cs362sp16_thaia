@@ -106,8 +106,6 @@ randcardtests: randtesta randtestc1 randtestc2 randtestex
 
 testdominion: dominion.o testdominion.c interface.o
 	gcc -o testdominion testdominion.c -g dominion.o interface.o rngs.o $(CFLAGS)
-
-testdominion.out: testdominion
 	./testdominion 42 >> testdominion.out
 	echo "GCOV OF RANDOM TESTER -- 1 RUN" >> testdominion.out
 	gcov testdominion.c >> testdominion.out
