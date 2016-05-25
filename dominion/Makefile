@@ -3,8 +3,8 @@ CFLAGS = -Wall -fpic -coverage -lm
 rngs.o: rngs.h rngs.c
 	gcc -c rngs.c -g  $(CFLAGS)
 
-dominion.o: dominion.h dominion.c rngs.o
-	gcc -c dominion.c -g  $(CFLAGS)
+dominion.o: dominion.h dominion.c rngs.o interface.o
+	gcc -c dominion.c -g rngs.o interface.o $(CFLAGS)
 
 playdom: dominion.o playdom.c
 	gcc -o playdom playdom.c -g dominion.o rngs.o $(CFLAGS)
@@ -106,13 +106,15 @@ randcardtests: randtesta randtestc1 randtestc2 randtestex
 
 testdominion: dominion.o testdominion.c interface.o
 	gcc -o testdominion testdominion.c -g dominion.o interface.o rngs.o $(CFLAGS)
+
+testdominion.out: testdominion
 	./testdominion 42 >> testdominion.out
 	echo "GCOV OF RANDOM TESTER -- 1 RUN" >> testdominion.out
 	gcov testdominion.c >> testdominion.out
 	echo "GCOV OF DOMINION" >> testdominion.out
 	gcov dominion.c >> testdominion.out 
 
-all: playdom player
+all: playdom player buildtests randtesta randtestc1 randtestc2 testdominion
 
 clean:
 	rm -f *.o playdom.exe playdom test.exe test player unittest1 unittest2 unittest3 unittest4 cardtest1 cardtest2 cardtest3 cardtest4 randtestadventurer randtestcard1 extrarandomtest randtestcard2 player.exe testInit testInit.exe *.out *.gcov *.gcda *.gcno *.so *.a *.dSYM
