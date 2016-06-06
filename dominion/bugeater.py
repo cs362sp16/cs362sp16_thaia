@@ -55,15 +55,21 @@ if s.find('FAILED ASSERTION') != -1:
 parsed.close()
 failures.close()
 
+spliced = []
+ft = []
+
 failures = open('failed.out', 'r')
 fcontent = failures.read().splitlines()
 n = mmap.mmap(failures.fileno(), 0, access=mmap.ACCESS_READ)
-if n.find('FAILED ASSERTION') != -1:
+if n.find('Testing') != -1:
     for mline in fcontent:
-        if start_print or 'Testing' in mline:
-            print mline
-            start_print = True
-            if "File 'dominion.c'" in mline:
-                start_print = False
+        if 'Testing' in mline:
+            spliced =  mline.split()
+            ft.append(spliced[1])
+print ft
 
+# Closed opened file
 failures.close()
+
+# auggggggggh
+
