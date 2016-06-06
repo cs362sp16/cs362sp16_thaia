@@ -14,50 +14,85 @@
         -:    9:
         -:   10:int failed = 0;
         -:   11:
-        2:   12:void assertTF(int b, char *msg){
-        2:   13:  if (b == 0){
-    #####:   14:    printf("FAILED ASSERTION: %s\n", msg);
-    #####:   15:    failed = 1;
+     3756:   12:void assertTF(int b, char *msg){
+     3756:   13:  if (b == 0){
+     3754:   14:    printf("FAILED ASSERTION: %s", msg);
+     3754:   15:    failed = 1;
         -:   16:  }
-        2:   17:}
+     3756:   17:}
         -:   18:
         1:   19:void checkasserts(){
         1:   20:  if (!failed){
-        1:   21:    printf("TEST SUCCESSFULLY COMPLETED\n\n");
+        1:   21:    printf("TESTS COMPLETED\n\n");
         -:   22:  }
         1:   23:}
         -:   24:
-        1:   25:int main(int argc, char *argv[]){
-        -:   26:  int i, j, r, numplayers, randSeed;
-        1:   27:  int k[10] = {smithy, adventurer, gardens, embargo, cutpurse, mine, ambassador,
-        -:   28:               outpost, baron, tribute};
-        -:   29:  int choice[4];
-        1:   30:  srand(time(NULL)); // Seed rng
-        -:   31:
-        -:   32:  struct gameState g;
-        -:   33:
-        1:   34:  printf("``cutpurse`` -- RANDOM TESTS START \n");
-        -:   35:
-        1:   36:  if (argc >= 2){
-        1:   37:    randSeed = atoi(argv[1]);
-        -:   38:  }else{
-    #####:   39:    randSeed = rand();
+      939:   25:int runthru(struct gameState *g, int handSz, int deckSz, int currcoins,
+        -:   26:            int nDiscard, int who){
+        -:   27:  int val;
+        -:   28:
+      939:   29:  val = g->handCount[who];
+      939:   30:  assertTF(val != handSz, "Number of cards in hand has changed\n");
+      939:   31:  val = g->deckCount[who];
+      939:   32:  assertTF(val != deckSz, "Number of cards in deck has changed\n");
+      939:   33:  val = g->coins;
+      939:   34:  assertTF(val != currcoins, "Number of coins in hand has changed\n");
+      939:   35:  val = g->discardCount[who];
+      939:   36:  assertTF(val != nDiscard, "Card(s) have been discarded\n");
+        -:   37:
+      939:   38:  if (failed){
+      939:   39:    printf("FAILURE FOUND\n\n");
         -:   40:  }
         -:   41:
-        1:   42:  numplayers = rand() % 2 + 2;
-        -:   43:  //randSeed = rand();
-        1:   44:  initializeGame(numplayers, k, randSeed, &g);
+      939:   42:  failed = 0;
+      939:   43:  return 0;
+        -:   44:}
         -:   45:
-        3:   46:  for (i = 0; i < numplayers; i++){
-        2:   47:    g.handCount[i] = rand() % MAX_HAND;
-        -:   48:    // Inner loop randomly generates choices from 1-3 for function cardEffect
-        8:   49:    for (j = 0; j < 3; j++){
-        6:   50:      choice[i] = rand() % 2 + 1;
-        -:   51:    }
-        2:   52:    r = cardEffect(cutpurse, choice[0], choice[1], choice[2], &g, 0, 0);
-        2:   53:    assertTF(r == 0, "Cutpurse played successfully\n");
-        -:   54:  }
-        1:   55:  printf("``cutpurse`` -- RANDOM TESTING COMPLETE \n");
-        -:   56:  
-        1:   57:  checkasserts();
-        -:   58:}
+        1:   46:int main(int argc, char *argv[]){
+        -:   47:  int i, j, numplayers, randSeed, runt, volte;
+        -:   48:  int handSz, deckSz, nDiscard, currcoins;
+        1:   49:  int k[10] = {smithy, adventurer, gardens, embargo, cutpurse, mine, ambassador,
+        -:   50:               outpost, baron, tribute};
+        -:   51:  int choice[4];
+        1:   52:  srand(time(NULL)); // Seed rng
+        -:   53:
+        -:   54:  struct gameState g;
+        -:   55:
+        1:   56:  printf("``cutpurse`` -- RANDOM TESTS START \n");
+        -:   57:
+        1:   58:  if (argc >= 2){
+        1:   59:    randSeed = atoi(argv[1]);
+        -:   60:  }else{
+    #####:   61:    randSeed = rand();
+        -:   62:  }
+        -:   63:
+        1:   64:  numplayers = rand() % 3 + 2;
+        1:   65:  initializeGame(numplayers, k, randSeed, &g);
+        -:   66:
+        1:   67:  volte = rand() % 1000;
+        1:   68:  printf("Tests run: %d", volte);
+        -:   69:
+      314:   70:  for (runt = 0; runt < volte; runt++){
+     1252:   71:    for (i = 0; i < numplayers; i++){
+      939:   72:      g.deckCount[i] = rand() % MAX_DECK;
+      939:   73:      g.handCount[i] = rand() % MAX_HAND;
+      939:   74:      g.discardCount[i] = rand() % MAX_HAND;
+        -:   75:      // Inner loop randomly generates choices from 1-3 for function cardEffect
+     3756:   76:      for (j = 0; j < 3; j++){
+     2817:   77:        choice[i] = rand() % 2 + 1;
+        -:   78:      }
+        -:   79:      //handPos = rand() % g.handCount[i];
+      939:   80:      g.hand[0][0] = cutpurse;
+      939:   81:      deckSz = g.deckCount[i];
+      939:   82:      handSz = g.handCount[i];
+      939:   83:      nDiscard = g.discardCount[i];
+      939:   84:      currcoins = g.coins;
+        -:   85:  
+      939:   86:      playCard(0, choice[0], choice[1], choice[2], &g);
+      939:   87:      runthru(&g, handSz, deckSz, currcoins, nDiscard, i);
+        -:   88:    }
+        -:   89:  }
+        1:   90:  printf("``cutpurse`` -- RANDOM TESTING COMPLETE \n");
+        1:   91:  checkasserts();
+        1:   92:  return 0;
+        -:   93:}
