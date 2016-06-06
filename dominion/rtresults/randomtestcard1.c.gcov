@@ -1,0 +1,63 @@
+        -:    0:Source:tests/randomtestcard1.c
+        -:    0:Graph:randomtestcard1.gcno
+        -:    0:Data:randomtestcard1.gcda
+        -:    0:Runs:1
+        -:    0:Programs:1
+        -:    1:#include <stdlib.h>
+        -:    2:#include <stdio.h>
+        -:    3:#include <math.h>
+        -:    4:#include <time.h>
+        -:    5:#include "../dominion.h"
+        -:    6:#include "../rngs.h"
+        -:    7:
+        -:    8:// Random Test Cutpurse
+        -:    9:
+        -:   10:int failed = 0;
+        -:   11:
+        2:   12:void assertTF(int b, char *msg){
+        2:   13:  if (b == 0){
+    #####:   14:    printf("FAILED ASSERTION: %s\n", msg);
+    #####:   15:    failed = 1;
+        -:   16:  }
+        2:   17:}
+        -:   18:
+        1:   19:void checkasserts(){
+        1:   20:  if (!failed){
+        1:   21:    printf("TEST SUCCESSFULLY COMPLETED\n\n");
+        -:   22:  }
+        1:   23:}
+        -:   24:
+        1:   25:int main(int argc, char *argv[]){
+        -:   26:  int i, j, r, numplayers, randSeed;
+        1:   27:  int k[10] = {smithy, adventurer, gardens, embargo, cutpurse, mine, ambassador,
+        -:   28:               outpost, baron, tribute};
+        -:   29:  int choice[4];
+        1:   30:  srand(time(NULL)); // Seed rng
+        -:   31:
+        -:   32:  struct gameState g;
+        -:   33:
+        1:   34:  printf("``cutpurse`` -- RANDOM TESTS START \n");
+        -:   35:
+        1:   36:  if (argc >= 2){
+        1:   37:    randSeed = atoi(argv[1]);
+        -:   38:  }else{
+    #####:   39:    randSeed = rand();
+        -:   40:  }
+        -:   41:
+        1:   42:  numplayers = rand() % 2 + 2;
+        -:   43:  //randSeed = rand();
+        1:   44:  initializeGame(numplayers, k, randSeed, &g);
+        -:   45:
+        3:   46:  for (i = 0; i < numplayers; i++){
+        2:   47:    g.handCount[i] = rand() % MAX_HAND;
+        -:   48:    // Inner loop randomly generates choices from 1-3 for function cardEffect
+        8:   49:    for (j = 0; j < 3; j++){
+        6:   50:      choice[i] = rand() % 2 + 1;
+        -:   51:    }
+        2:   52:    r = cardEffect(cutpurse, choice[0], choice[1], choice[2], &g, 0, 0);
+        2:   53:    assertTF(r == 0, "Cutpurse played successfully\n");
+        -:   54:  }
+        1:   55:  printf("``cutpurse`` -- RANDOM TESTING COMPLETE \n");
+        -:   56:  
+        1:   57:  checkasserts();
+        -:   58:}

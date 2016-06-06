@@ -1,0 +1,52 @@
+        -:    0:Source:tests/cardtest2.c
+        -:    0:Graph:cardtest2.gcno
+        -:    0:Data:cardtest2.gcda
+        -:    0:Runs:1
+        -:    0:Programs:1
+        -:    1:#include <stdio.h>
+        -:    2:#include "../dominion.h"
+        -:    3:
+        -:    4:// Card Test 2 - Village 
+        -:    5:
+        -:    6:int failed = 0;
+        -:    7:
+        2:    8:void assertTF(int b, char *msg){
+        2:    9:  if (b == 0){
+    #####:   10:    printf("FAILED ASSERTION: %s\n", msg);
+    #####:   11:    failed = 1;
+        -:   12:  }
+        2:   13:}
+        -:   14:
+        1:   15:void checkasserts(){
+        1:   16:  if (!failed){
+        1:   17:    printf("TEST SUCCESSFULLY COMPLETED\n");
+        -:   18:  }
+        1:   19:}
+        -:   20:
+        1:   21:int main(){
+        -:   22:  struct gameState g;
+        1:   23:  int k[10] = {village, smithy, adventurer, gardens, embargo, cutpurse, mine,
+        -:   24:            outpost, baron, tribute};
+        -:   25:
+        1:   26:  int choice1 = 0;
+        1:   27:  int choice2 = 0;
+        1:   28:  int choice3 = 0;
+        1:   29:  int handPos = 0;
+        -:   30:
+        1:   31:  initializeGame(2, k, 5, &g);
+        1:   32:  g.hand[0][0] = village;
+        1:   33:  g.whoseTurn = 0;
+        1:   34:  g.numActions = 1;  
+        -:   35:
+        1:   36:  int num = numHandCards(&g);
+        1:   37:  playCard(handPos, choice1, choice2, choice3, &g);
+        1:   38:  int numa = numHandCards(&g);
+        -:   39: 
+        -:   40:  // Amount of cards in hand should be same as start
+        1:   41:  assertTF(numa == num, "Number of cards in hand shouldn't change\n");
+        -:   42:
+        -:   43:  // # of actions should == 2 (Subtract 1 to play card, add 2 after playing
+        1:   44:  assertTF(g.numActions == 2, "Number of actions should increase by 2\n");
+        -:   45:
+        1:   46:  checkasserts();
+        -:   47:}

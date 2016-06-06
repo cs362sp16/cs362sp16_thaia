@@ -1,0 +1,18 @@
+FUNCTION COV OF UT2
+Function 'main'
+Lines executed:100.00% of 22
+
+Function 'checkasserts'
+Lines executed:75.00% of 4
+
+Function 'assertTF'
+Lines executed:100.00% of 5
+
+File 'tests/unittest2.c'
+Lines executed:96.77% of 31
+Creating 'unittest2.c.gcov'
+
+File '<built-in>'
+No executable lines
+Removing '<built-in>.gcov'
+

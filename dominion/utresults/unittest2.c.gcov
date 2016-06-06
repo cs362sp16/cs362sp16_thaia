@@ -1,0 +1,57 @@
+        -:    0:Source:tests/unittest2.c
+        -:    0:Graph:unittest2.gcno
+        -:    0:Data:unittest2.gcda
+        -:    0:Runs:1
+        -:    0:Programs:1
+        -:    1:#include <stdio.h>
+        -:    2:#include "../dominion.h"
+        -:    3:
+        -:    4:// Test 2 - updateCoins
+        -:    5:
+        -:    6:int failed = 0;
+        -:    7:
+        4:    8:void assertTF(int b, char *msg){
+        4:    9:  if (b == 0){
+        1:   10:    printf("FAILED ASSERTION: %s\n", msg);
+        1:   11:    failed = 1;
+        -:   12:  }
+        4:   13:}
+        -:   14:
+        1:   15:void checkasserts(){
+        1:   16:  if (!failed){
+    #####:   17:    printf("TEST SUCCESSFULLY COMPLETED\n");
+        -:   18:  }
+        1:   19:}
+        -:   20:
+        1:   21:int main(){
+        -:   22:  struct gameState g;
+        1:   23:  int k[10] = {smithy, adventurer, gardens, embargo, cutpurse, mine, ambassador,
+        -:   24:               outpost, baron, tribute};
+        -:   25:
+        1:   26:  int handPos = 1;
+        1:   27:  int choice1 = 1;
+        1:   28:  int choice2 = 2;
+        1:   29:  int choice3 = 3;
+        -:   30:
+        1:   31:  initializeGame(2, k, 5, &g);
+        1:   32:  int status = playCard(handPos, choice1, choice2, choice3, &g); 
+        -:   33:  
+        1:   34:  g.phase = 0;
+        1:   35:  status = playCard(handPos, choice1, choice2, choice3, &g); 
+        1:   36:  assertTF(status == 0, "Correct phase\n");
+        -:   37:
+        1:   38:  g.numActions = 1;
+        1:   39:  status = playCard(handPos, choice1, choice2, choice3, &g);
+        1:   40:  assertTF(status == -1, "Valid amount of actions to play card\n");
+        -:   41:
+        1:   42:  g.numActions = 0;
+        1:   43:  status = playCard(handPos, choice1, choice2, choice3, &g);
+        1:   44:  assertTF(status == -1, "No actions left\n");
+        -:   45:
+        1:   46:  g.numActions = 1;
+        1:   47:  g.phase = 1;
+        1:   48:  status = playCard(handPos, choice1, choice2, choice3, &g);  
+        1:   49:  assertTF(status == -1, "Incorrect phase to play card\n");
+        -:   50:
+        1:   51:  checkasserts();
+        -:   52:}

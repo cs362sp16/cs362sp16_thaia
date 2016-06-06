@@ -1,0 +1,44 @@
+        -:    0:Source:tests/unittest1.c
+        -:    0:Graph:unittest1.gcno
+        -:    0:Data:unittest1.gcda
+        -:    0:Runs:1
+        -:    0:Programs:1
+        -:    1:#include <stdio.h>
+        -:    2:#include "../dominion.h"
+        -:    3://#include "assert.h"
+        -:    4:
+        -:    5:// Test 1 - Game initialization
+        -:    6:
+        -:    7:int failed = 0;
+        -:    8:
+        3:    9:void assertTF(int b, char *msg){
+        3:   10:  if (b == 0){
+    #####:   11:    printf("FAILED ASSERTION: %s\n", msg);
+    #####:   12:    failed = 1;
+        -:   13:  }
+        3:   14:}
+        -:   15:
+        1:   16:void checkasserts(){
+        1:   17:  if (!failed) {
+        1:   18:    printf("TEST SUCCESSFULLY COMPLETED\n");
+        -:   19:  }
+        1:   20:}
+        -:   21:
+        1:   22:int main(){
+        -:   23:  struct gameState g;
+        1:   24:  int kingdomCards[10] = {smithy, adventurer, gardens, embargo, cutpurse, mine,
+        -:   25:                          ambassador, outpost, baron, tribute};
+        1:   26:  int kCards[10] = {smithy, adventurer, gardens, embargo, cutpurse, mine,
+        -:   27:                    ambassador, outpost, baron, baron};
+        -:   28:
+        1:   29:  int status = initializeGame(2, kingdomCards, 5, &g);
+        1:   30:  assertTF(status == 0, "Game properly initialized");
+        -:   31:
+        1:   32:  status = initializeGame(2, kCards, 5, &g);
+        1:   33:  assertTF(status == -1, "Duplicate card in setup --> Failure");
+        -:   34:
+        1:   35:  status = initializeGame(500, kingdomCards, 5, &g);
+        1:   36:  assertTF(status == -1, "There are too many players!");
+        -:   37:
+        1:   38:  checkasserts();
+        -:   39:}

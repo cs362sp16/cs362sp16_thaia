@@ -1,0 +1,38 @@
+        -:    0:Source:tests/unittest3.c
+        -:    0:Graph:unittest3.gcno
+        -:    0:Data:unittest3.gcda
+        -:    0:Runs:1
+        -:    0:Programs:1
+        -:    1:#include <stdio.h>
+        -:    2:#include "../dominion.h"
+        -:    3:
+        -:    4:// Test 3 - check that winners are properly set in getWinners()
+        -:    5:
+        -:    6:int failed = 0;
+        -:    7:
+        1:    8:void assertTF(int b, char *msg){
+        1:    9:  if (b == 0){
+    #####:   10:    printf("FAILED ASSERTION: %s\n", msg);
+    #####:   11:    failed = 1;
+        -:   12:  }
+        1:   13:}
+        -:   14:
+        1:   15:void checkasserts(){
+        1:   16:  if (!failed){
+        1:   17:    printf("TEST SUCCESSFULLY COMPLETED\n");
+        -:   18:  }
+        1:   19:}
+        -:   20:
+        1:   21:int main(){
+        -:   22:  struct gameState g;
+        -:   23:
+        1:   24:  int k[10] = {smithy, adventurer, gardens, embargo, cutpurse, mine, ambassador,
+        -:   25:               outpost, baron, tribute};
+        -:   26:
+        1:   27:  initializeGame(4, k, 5, &g);     
+        1:   28:  int players[4] = {45, 21, 99, 25};
+        1:   29:  int status = getWinners(players, &g);
+        1:   30:  assertTF(status == 0, "Winners have been set\n");
+        -:   31: 
+        1:   32:  checkasserts();
+        -:   33:}
