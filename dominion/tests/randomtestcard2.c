@@ -18,7 +18,7 @@ void assertTF(int b, char *msg){
 
 void checkasserts(){
   if (!failed){
-    printf("TEST SUCCESSFULLY COMPLETED\n\n");
+    printf("TESTS COMPLETED\n\n");
   }
 }
 
@@ -44,7 +44,7 @@ int runthru(struct gameState *g, int handSz, int deckSz, int currcoins,
 }
 
 int main(int argc, char *argv[]){
-  int i, j, numplayers, randSeed, handPos;
+  int i, j, numplayers, randSeed, runt, volte;
   int deckSz, handSz, nDiscard, currcoins;
   int k[10] = {smithy, adventurer, gardens, embargo, cutpurse, mine, ambassador,
                outpost, baron, tribute};
@@ -62,28 +62,32 @@ int main(int argc, char *argv[]){
   }
 
   numplayers = rand() % 2 + 2;
-  //randSeed = rand();
   initializeGame(numplayers, k, randSeed, &g);
 
-  for (i = 0; i < numplayers; i++){
-    g.deckCount[i] = rand() % MAX_DECK;
-    g.handCount[i] = rand() % MAX_HAND;
-    g.discardCount[i] = rand() % MAX_HAND;
-    for (j = 0; j < 3; j++){
-      choice[i] = rand() % 2 + 1;
-    }
-    //r = cardEffect(smithy, choice[0], choice[1], choice[2], &g, 0, 0);
-    //assertTF(r == 0, "Smithy played successfully\n");
-    handPos = rand() % g.handCount[i];
-    deckSz = g.deckCount[i];
-    handSz = g.handCount[i];
-    nDiscard = g.discardCount[i];
-    currcoins = g.coins;
+  volte = rand() % 1000;
+  printf("Tests run: %d\n", volte);
 
-    playCard(handPos, choice[0], choice[1], choice[2], &g);
-    runthru(&g, handSz, deckSz, currcoins, nDiscard, i);
+  for (runt = 0; runt < volte; runt++){
+    for (i = 0; i < numplayers; i++){
+      g.deckCount[i] = rand() % MAX_DECK;
+      g.handCount[i] = rand() % MAX_HAND;
+      g.discardCount[i] = rand() % MAX_HAND;
+      for (j = 0; j < 3; j++){
+        choice[i] = rand() % 2 + 1;
+      }
+      //r = cardEffect(smithy, choice[0], choice[1], choice[2], &g, 0, 0);
+      //assertTF(r == 0, "Smithy played successfully\n");
+      g.hand[0][0] = smithy;
+      deckSz = g.deckCount[i];
+      handSz = g.handCount[i];
+      nDiscard = g.discardCount[i];
+      currcoins = g.coins;
+  
+      playCard(0, choice[0], choice[1], choice[2], &g);
+      runthru(&g, handSz, deckSz, currcoins, nDiscard, i);
+    }
   }
   printf("``smithy`` -- RANDOM TESTING COMPLETE \n");
-  //checkasserts();
+  checkasserts();
   return 0;
 }
