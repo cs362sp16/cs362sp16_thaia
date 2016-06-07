@@ -1,4 +1,5 @@
 #!/usr/bin/python 2.7
+from __future__ import division
 import math
 import fileinput
 import mmap
@@ -91,6 +92,24 @@ totalfailed = advfails + cutfails + smithfails
 print
 print "Total passed: ", totalpassed
 print "Total failed: ", totalfailed
+print
+
+suspect_adventurer = 0
+suspect_cutpurse = 0
+suspect_smithy = 0
+
+adv_denom = (advpass/totalpassed)+(advfails/totalfailed)
+#print "denom:", adv_denom
+suspect_adventurer = ((advfails/totalfailed))/adv_denom
+print "sa: ", suspect_adventurer
+
+cut_denom = (cutpass/totalpassed)+(cutfails/totalfailed)
+suspect_cutpurse =((cutfails/totalfailed))/cut_denom
+print "sc: ", suspect_cutpurse
+
+smith_denom = (smithpass/totalpassed)+(smithfails/totalfailed)
+suspect_smithy =((smithfails/totalfailed))/smith_denom
+print "ss: ", suspect_smithy
 
 #failures = open('failed.out', 'w+')
 #start_print = False
