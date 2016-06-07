@@ -1,0 +1,100 @@
+        -:    0:Source:tests/randomtestadventurer.c
+        -:    0:Graph:randomtestadventurer.gcno
+        -:    0:Data:randomtestadventurer.gcda
+        -:    0:Runs:1
+        -:    0:Programs:1
+        -:    1:#include <stdlib.h>
+        -:    2:#include <stdio.h>
+        -:    3:#include <math.h>
+        -:    4:#include <time.h>
+        -:    5:#include "../dominion.h"
+        -:    6:#include "../rngs.h"
+        -:    7:#include "../interface.h"
+        -:    8:
+        -:    9:// Random Test Adventurer
+        -:   10:
+        -:   11:int failed = 0;
+        -:   12:
+     2656:   13:void assertTF(int b, char *msg){
+     2656:   14:  if (b == 0){
+       18:   15:    printf("FAILED ASSERTION: %s", msg);
+       18:   16:    failed = 1;
+        -:   17:  }
+     2656:   18:}
+        -:   19:
+        1:   20:void checkasserts(){
+        1:   21:  if (!failed){
+        1:   22:    printf("TESTS COMPLETED.\n\n");
+        -:   23:  }
+        1:   24:}
+        -:   25:
+      664:   26:int runthru(struct gameState *g, int handSz, int deckSz, int currcoins,
+        -:   27:            int nDiscard, int who){
+        -:   28:  int val;
+        -:   29:
+      664:   30:  val = g->handCount[who];
+      664:   31:  assertTF(val != handSz, "Number of cards in hand has changed\n");
+      664:   32:  val = g->deckCount[who];
+      664:   33:  assertTF(val != deckSz, "Number of cards in deck has changed\n");
+      664:   34:  val = g->coins;
+      664:   35:  assertTF(val != currcoins, "Number of coins in hand has changed\n");
+      664:   36:  val = g->discardCount[who];
+      664:   37:  assertTF(val != nDiscard, "Card(s) have been discarded\n");
+        -:   38:
+      664:   39:  if (failed){
+       12:   40:    printf("FAILURE FOUND\n\n");
+        -:   41:  }
+        -:   42:
+      664:   43:  failed = 0;
+      664:   44:  return 0;
+        -:   45:}
+        -:   46:
+        1:   47:int main(int argc, char *argv[]){
+        -:   48:  int j, numplayers, randSeed, runt, volte;
+        -:   49:  int handSz, deckSz, nDiscard, currcoins;
+        1:   50:  int k[10] = {smithy, adventurer, gardens, embargo, cutpurse, mine, ambassador,
+        -:   51:               outpost, baron, tribute};
+        -:   52:  int choice[4];
+        1:   53:  srand(time(NULL)); // Seed rng
+        -:   54:  
+        -:   55:  struct gameState g;
+        -:   56:
+        1:   57:  printf("``adventurer`` -- RANDOM TESTS START \n");
+        -:   58:
+        1:   59:  if (argc >= 2){
+        1:   60:    randSeed = atoi(argv[1]);
+        -:   61:  }
+        -:   62:  else{
+    #####:   63:    randSeed = rand();
+        -:   64:  }
+        -:   65:
+        -:   66:  //numplayers = rand() % 3 + 2;
+        -:   67:  //initializeGame(numplayers, k, randSeed, &g);
+        -:   68:
+        1:   69:  volte = rand() % 1000;
+        1:   70:  printf("Tests run: %d\n", (volte));
+        -:   71:
+      665:   72:  for (runt = 0; runt < volte; runt++){
+      664:   73:    numplayers = rand() % 3 + 2;
+      664:   74:    initializeGame(numplayers, k, randSeed, &g);
+      664:   75:    g.deckCount[0] = rand() % MAX_DECK;
+      664:   76:    g.handCount[0] = rand() % MAX_HAND;
+      664:   77:    g.discardCount[0] = rand() % MAX_HAND;
+        -:   78:    // Randomly generating choices to be made
+     2656:   79:    for (j = 0; j < 3; j++){
+     1992:   80:      choice[j] = rand() % 3 + 1;
+        -:   81:    }
+        -:   82:    //handPos = rand() % g.handCount[i];
+      664:   83:    g.hand[0][0] = adventurer;
+      664:   84:    deckSz = g.deckCount[0];
+      664:   85:    handSz = g.handCount[0];
+      664:   86:    nDiscard = g.discardCount[0];
+      664:   87:    currcoins = g.coins;
+        -:   88: 
+      664:   89:    playCard(0, choice[0], choice[1], choice[2], &g);
+      664:   90:    runthru(&g, handSz, deckSz, currcoins, nDiscard, 0); 
+        -:   91:  }
+        1:   92:  printf("``adventurer`` -- RANDOM TESTING COMPLETE \n\n");
+        1:   93:  checkasserts();
+        1:   94:  return 0;
+        -:   95:}

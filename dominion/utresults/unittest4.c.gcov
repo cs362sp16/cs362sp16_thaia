@@ -1,0 +1,54 @@
+        -:    0:Source:tests/unittest4.c
+        -:    0:Graph:unittest4.gcno
+        -:    0:Data:unittest4.gcda
+        -:    0:Runs:1
+        -:    0:Programs:1
+        -:    1:#include <stdio.h>
+        -:    2:#include "../dominion.h"
+        -:    3:
+        -:    4:// Test 4 - Game over
+        -:    5:
+        -:    6:int failed = 0;
+        -:    7:
+        3:    8:void assertTF(int b, char *msg){
+        3:    9:  if (b == 0){
+    #####:   10:    printf("FAILED ASSERTION: %s\n", msg);
+    #####:   11:    failed = 1;
+        -:   12:  }
+        3:   13:}
+        -:   14:
+        1:   15:void checkasserts(){
+        1:   16:  if (!failed){
+        1:   17:    printf("TEST SUCCESSFULLY COMPLETED\n");
+        -:   18:  }
+        1:   19:}
+        -:   20:
+        1:   21:int main(){
+        -:   22:  
+        -:   23:  // setup an empty game
+        -:   24:  struct gameState g; //= calloc(1, sizeof(struct gameState));
+        -:   25:  
+        1:   26:  int k[10] = {smithy, adventurer, gardens, embargo, cutpurse, province, curse,
+        -:   27:               mine, outpost, tribute};
+        -:   28:  
+        1:   29:  initializeGame(2, k, 5, &g);
+        -:   30:
+        1:   31:  int status = isGameOver(&g);
+        1:   32:  assertTF(status == 0, "Newly initialized game. Should not be over\n");
+        -:   33:
+        -:   34:  // Force game end by setting province supply to 0
+        1:   35:  g.supplyCount[province] = 0;
+        1:   36:  status = isGameOver(&g);
+        1:   37:  assertTF(status == 1, "All Province cards have been used\n");
+        -:   38:
+        -:   39:  // Reset province, set three other supply cards to 0
+        1:   40:  g.supplyCount[province] = 2;
+        1:   41:  g.supplyCount[curse] = 0;
+        1:   42:  g.supplyCount[adventurer] = 0;
+        1:   43:  g.supplyCount[cutpurse] = 0;
+        -:   44:
+        1:   45:  status = isGameOver(&g);
+        1:   46:  assertTF(status == 1, "At least three supply piles have been emptied\n");
+        -:   47:
+        1:   48:  checkasserts();
+        -:   49:}

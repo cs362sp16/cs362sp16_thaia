@@ -1,0 +1,18 @@
+FUNCTION COV OF CARD 3
+Function 'main'
+Lines executed:100.00% of 22
+
+Function 'checkasserts'
+Lines executed:75.00% of 4
+
+Function 'assertTF'
+Lines executed:100.00% of 5
+
+File 'tests/cardtest3.c'
+Lines executed:96.77% of 31
+Creating 'cardtest3.c.gcov'
+
+File '<built-in>'
+No executable lines
+Removing '<built-in>.gcov'
+

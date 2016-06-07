@@ -1,0 +1,45 @@
+Running a series of random tests against the card ``adventurer`` results in
+rare failures.
+
+The random test for this card checked that the current player's handCount, 
+deckCount, amount of coins in hand, and size of the discard pile.
+
+Running the tests 374 times, resulted in one failue to discard.
+
+The following is the full output of the test results, please refer to the
+randomtestadventurer.c file for more information:
+```
+  ...
+  ``adventurer`` -- RANDOM TESTS START 
+  Tests run: 374
+  FAILED ASSERTION: Card(s) have been discarded
+  FAILURE FOUND
+  
+  ``adventurer`` -- RANDOM TESTING COMPLETE 
+  
+  TESTS COMPLETED.
+  
+  GCOV OF RANDOM TESTING: ADVENTURER
+  Function 'main'
+  Lines executed:96.30% of 27
+  
+  Function 'runthru'
+  Lines executed:100.00% of 13
+  
+  Function 'checkasserts'
+  Lines executed:100.00% of 4
+  
+  Function 'assertTF'
+  Lines executed:100.00% of 5
+  
+  File 'tests/randomtestadventurer.c'
+  Lines executed:97.96% of 49
+  Creating 'randomtestadventurer.c.gcov'
+  
+  GCOV OF DOMINION
+  File 'dominion.c'
+  Lines executed:52.59% of 559
+  Creating 'dominion.c.gcov'
+  ...
+
+```

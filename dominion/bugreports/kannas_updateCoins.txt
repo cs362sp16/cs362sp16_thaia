@@ -1,0 +1,19 @@
+The unit test for the function ``updateCoins`` within dominion.c fails.
+
+The resulting error message when printing coverage results was:
+```
+  ...
+
+  FAILED ASSERTION: Correct phase
+  
+  GCOV AFTER 2 TESTS
+  Testing: unittest2.c
+  File 'dominion.c'
+  Lines executed:18.78% of 559
+  Creating 'dominion.c.gcov'
+  ...
+
+```
+
+This seems to suggest that in the function updateCoins, game phase is not being
+changed (correctly). This causes everything afterwards to fail.

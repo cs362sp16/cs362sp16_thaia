@@ -1,0 +1,70 @@
+``adventurer`` -- RANDOM TESTS START 
+Tests run: 664
+FAILED ASSERTION: Card(s) have been discarded
+FAILURE FOUND
+
+FAILED ASSERTION: Card(s) have been discarded
+FAILURE FOUND
+
+FAILED ASSERTION: Card(s) have been discarded
+FAILURE FOUND
+
+FAILED ASSERTION: Card(s) have been discarded
+FAILURE FOUND
+
+FAILED ASSERTION: Card(s) have been discarded
+FAILURE FOUND
+
+FAILED ASSERTION: Card(s) have been discarded
+FAILURE FOUND
+
+FAILED ASSERTION: Card(s) have been discarded
+FAILURE FOUND
+
+FAILED ASSERTION: Number of cards in hand has changed
+FAILED ASSERTION: Number of cards in deck has changed
+FAILED ASSERTION: Card(s) have been discarded
+FAILURE FOUND
+
+FAILED ASSERTION: Card(s) have been discarded
+FAILURE FOUND
+
+FAILED ASSERTION: Card(s) have been discarded
+FAILURE FOUND
+
+FAILED ASSERTION: Number of cards in hand has changed
+FAILED ASSERTION: Number of cards in deck has changed
+FAILED ASSERTION: Card(s) have been discarded
+FAILURE FOUND
+
+FAILED ASSERTION: Number of cards in hand has changed
+FAILED ASSERTION: Number of cards in deck has changed
+FAILED ASSERTION: Card(s) have been discarded
+FAILURE FOUND
+
+``adventurer`` -- RANDOM TESTING COMPLETE 
+
+TESTS COMPLETED.
+
+GCOV OF RANDOM TESTING: ADVENTURER
+Function 'main'
+Lines executed:96.30% of 27
+
+Function 'runthru'
+Lines executed:100.00% of 13
+
+Function 'checkasserts'
+Lines executed:100.00% of 4
+
+Function 'assertTF'
+Lines executed:100.00% of 5
+
+File 'tests/randomtestadventurer.c'
+Lines executed:97.96% of 49
+Creating 'randomtestadventurer.c.gcov'
+
+GCOV OF DOMINION
+File 'dominion.c'
+Lines executed:26.37% of 565
+Creating 'dominion.c.gcov'
+
