@@ -3,5 +3,5 @@
 ### Dominion Rewrite
 
 Note: The .out files for both the random and unit tests were regenerated
-and moved into their own directories. They are now contained within rtresults
-and utresults respectively.
+and moved into their own directories. New results are now contained within
+rtresults and utresults respectively.
