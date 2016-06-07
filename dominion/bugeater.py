@@ -13,31 +13,9 @@ import mmap
 #         test somehow
 #      3) parsing the gcov files and using the tarantula formula.
 
-#parsed = open('parsed_utr.out', 'w+')
-#
-#with open('utresults/unittestresults.out', 'r') as f:
-##    print 'FILED OPENED: ', f.name, "\n"
-#    #content = [x.strip('\n') for x in f.readlines()]
-#    # Reads text until the end of the block
-#    content = f.read().splitlines()
-#    for line in content:
-#        if line.strip() == 'Starting game.':
-#            break
-##        print "Read line: ", (line)
-#        parsed.write(line)
-#        parsed.write('\n')
-
-#    for line in content:    
-#        if line.strip() == 'GCOV AFTER PLAYING A GAME':
-#            break
-#        print "Read line: ", (line)
-
-## Close opened files
-#f.close()
-#parsed.close()
-
 spliced = []
 
+# Parsing randomtestadventurer.out
 advfails = 0
 advpass = 0
 with open('rtresults/randomtestadventurer.out', 'r') as adv:
@@ -53,6 +31,7 @@ print "Passing tests: ", advpass
 print "Number of failures in ``adventurer``: ", advfails, '\n'
 adv.close()
 
+# Parsing randomtestcard1.out
 cutfails = 0
 cutpass = 0
 with open('rtresults/randomtestcard1.out', 'r') as cutpurse:
@@ -68,6 +47,7 @@ print "Passing tests: ", cutpass
 print "Number of failures in ``cutpurse``: ", cutfails, '\n'
 cutpurse.close()
 
+# Parsing randomtestcard2.out
 smithfails = 0
 smithpass = 0
 with open('rtresults/randomtestcard2.out', 'r') as smithy:
@@ -83,6 +63,7 @@ print "Passing tests: ", smithpass
 print "Number of failures in ``smithy``: ", smithfails
 smithy.close()
 
+# Not very pretty but functional enough - tarantula math?
 totalpassed = 0
 totalfailed = 0
 
@@ -99,53 +80,44 @@ suspect_cutpurse = 0
 suspect_smithy = 0
 
 adv_denom = (advpass/totalpassed)+(advfails/totalfailed)
-#print "denom:", adv_denom
 suspect_adventurer = ((advfails/totalfailed))/adv_denom
-print "sa: ", suspect_adventurer
+print "suspicious adventurer: ", suspect_adventurer
 
 cut_denom = (cutpass/totalpassed)+(cutfails/totalfailed)
 suspect_cutpurse =((cutfails/totalfailed))/cut_denom
-print "sc: ", suspect_cutpurse
+print "suspicious cutpurse: ", suspect_cutpurse
 
 smith_denom = (smithpass/totalpassed)+(smithfails/totalfailed)
 suspect_smithy =((smithfails/totalfailed))/smith_denom
-print "ss: ", suspect_smithy
+print "suspicious smithy: ", suspect_smithy
+print
 
-#failures = open('failed.out', 'w+')
-#start_print = False
-#
-#parsed = open('parsed_utr.out')
-#pcontent = parsed.read().splitlines()
-#s = mmap.mmap(parsed.fileno(), 0, access=mmap.ACCESS_READ)
-#if s.find('FAILED ASSERTION') != -1:
-#    for aline in pcontent:
-#        if start_print or 'FAILED ASSERTION' in aline:
-#            failures.write(aline)
-#            failures.write('\n')
-#            # print aline
-#            start_print = True
-#            if "Creating 'dominion.c.gcov'" in aline:
-#                start_print = False
-#
-## Close opened files
-#parsed.close()
-#failures.close()
-#
-#spliced = []
-#ft = []
-#
-#failures = open('failed.out', 'r')
-#fcontent = failures.read().splitlines()
-#n = mmap.mmap(failures.fileno(), 0, access=mmap.ACCESS_READ)
-#if n.find('Testing') != -1:
-#    for mline in fcontent:
-#        if 'Testing' in mline:
-#            spliced =  mline.split()
-#            ft.append(spliced[1])
-#print ft
-#
-## Closed opened file
-#failures.close()
+parsed = open('rtresults/rc2_dominion.c.gcov', 'r')
+pcontent = parsed.read().splitlines()
+for line in pcontent:
+    if '875' in line:
+        spliced = line.split(':')
+    smith_tot = spliced[0]
+float(smith_tot)
+print "smithy total: ", smith_tot
+parsed.close()
 
-# auggggggggh
+parsed = open('rtresults/rc1_dominion.c.gcov', 'r')
+pcontent = parsed.read().splitlines()
+for line in pcontent:
+    if '705' in line:
+        spliced = line.split(':')
+    cut_tot = spliced[0]
+float(cut_tot)
+print "cutpurse total: ", cut_tot
+parsed.close()
 
+parsed = open('rtresults/adv_dominion.c.gcov', 'r')
+pcontent = parsed.read().splitlines()
+for line in pcontent:
+    if '757' in line:
+        spliced = line.split(':')
+    adv_tot = spliced[0]
+float(adv_tot)
+print "adventurer total: ", adv_tot
+parsed.close()

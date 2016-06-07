@@ -39,14 +39,14 @@ cardtest3: tests/cardtest3.c dominion.o rngs.o
 cardtest4: tests/cardtest4.c dominion.o rngs.o
 	gcc -o cardtest4 tests/cardtest4.c -g dominion.o rngs.o $(CFLAGS)
 
-randtesta: tests/randomtestadventurer.c dominion.o rngs.o
-	gcc -o randtestadventurer tests/randomtestadventurer.c -g dominion.o rngs.o $(CFLAGS)
+randtesta: tests/randomtestadventurer.c dominion.o rngs.o interface.o
+	gcc -o randtestadventurer tests/randomtestadventurer.c -g dominion.o interface.o rngs.o $(CFLAGS)
 
 randtestc1: tests/randomtestcard1.c dominion.o rngs.o
 	gcc -o randtestcard1 tests/randomtestcard1.c -g dominion.o rngs.o $(CFLAGS)
 
-randtestc2: tests/randomtestcard2.c dominion.o rngs.o
-	gcc -o randtestcard2 tests/randomtestcard2.c -g dominion.o rngs.o $(CFLAGS)
+randtestc2: tests/randomtestcard2.c dominion.o rngs.o interface.o
+	gcc -o randtestcard2 tests/randomtestcard2.c -g dominion.o interface.o rngs.o $(CFLAGS)
 
 randtestex: tests/extrarandomtest.c dominion.o rngs.o
 	gcc -o extrarandomtest tests/extrarandomtest.c -g dominion.o rngs.o $(CFLAGS)
@@ -122,11 +122,27 @@ randcardtests: randtesta randtestc1 randtestc2 randtestex
 	gcov -f randomtestcard2.c >> rtresults/randomtestcard2.out
 	echo "GCOV OF DOMINION" >> rtresults/randomtestcard2.out
 	gcov dominion.c >> rtresults/randomtestcard2.out
-	echo "GCOV OF RANDOM TESTING: BARON" >> extrarandomtest.out
-	./extrarandomtest 42 >> extrarandomtest.out
-	gcov -f extrarandomtest.c >> extrarandomtest.out
-	echo "GCOV OF DOMINION" >> extrarandomtest.out
-	gcov dominion.c >> extrarandomtest.out
+
+randadv: randtesta 
+	./randtestadventurer 42 >> rtresults/randomtestadventurer.out
+	echo "GCOV OF RANDOM TESTING: ADVENTURER" >> rtresults/randomtestadventurer.out
+	gcov -f randomtestadventurer.c >> rtresults/randomtestadventurer.out
+	echo "GCOV OF DOMINION" >> rtresults/randomtestadventurer.out
+	gcov dominion.c >> rtresults/randomtestadventurer.out
+
+randc1: randtestc1
+	./randtestcard1  42>> rtresults/randomtestcard1.out
+	echo "GCOV OF RANDOM TESTING: CUTPURSE" >> rtresults/randomtestcard1.out
+	gcov -f randomtestcard1.c >> rtresults/randomtestcard1.out
+	echo "GCOV OF DOMINION" >> rtresults/randomtestcard1.out
+	gcov dominion.c >> rtresults/randomtestcard1.out
+
+randc2: randtestc2
+	./randtestcard2 42 >> rtresults/randomtestcard2.out
+	echo "GCOV OF RANDOM TESTING: SMITHY" >> rtresults/randomtestcard2.out
+	gcov -f randomtestcard2.c >> rtresults/randomtestcard2.out
+	echo "GCOV OF DOMINION" >> rtresults/randomtestcard2.out
+	gcov dominion.c >> rtresults/randomtestcard2.out
 
 testdominion: dominion.o testdominion.c interface.o
 	gcc -o testdominion testdominion.c -g dominion.o interface.o rngs.o $(CFLAGS)
@@ -141,4 +157,4 @@ testdominion.out: testdominion
 all: playdom player buildtests randtesta randtestc1 randtestc2 testdominion
 
 clean:
-	rm -f *.o playdom.exe playdom test.exe test player unittest1 unittest2 unittest3 unittest4 cardtest1 cardtest2 cardtest3 cardtest4 randtestadventurer randtestcard1 extrarandomtest randtestcard2 player.exe testInit testInit.exe *.out *.gcov *.gcda *.gcno *.so *.a *.dSYM
+	rm -f *.o playdom.exe playdom test.exe test player unittest1 unittest2 unittest3 unittest4 cardtest1 cardtest2 cardtest3 cardtest4 randtestadventurer randtestcard1 extrarandomtest randtestcard2 randadv randc1 randc2 player.exe testInit testInit.exe *.out *.gcov *.gcda *.gcno *.so *.a *.dSYM

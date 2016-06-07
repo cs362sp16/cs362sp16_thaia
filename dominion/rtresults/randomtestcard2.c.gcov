@@ -15,12 +15,12 @@
         -:   10:
         -:   11:int failed = 0;
         -:   12:
-      994:   13:void assertTF(int b, char *msg){
-      994:   14:  if (b == 0){
+     1520:   13:void assertTF(int b, char *msg){
+     1520:   14:  if (b == 0){
     #####:   15:    printf("FAILED ASSERTION: %s", msg);
     #####:   16:    failed = 1;
         -:   17:  }
-      994:   18:}
+     1520:   18:}
         -:   19:
         1:   20:void checkasserts(){
         1:   21:  if (!failed){
@@ -28,19 +28,19 @@
         -:   23:  }
         1:   24:}
         -:   25:
-      497:   26:int runthru(struct gameState *g, int handSz, int deckSz, int who){
+      760:   26:int runthru(struct gameState *g, int handSz, int deckSz, int who){
         -:   27:  int val;
         -:   28:
-      497:   29:  val = g->handCount[who];
-      497:   30:  assertTF(val != handSz, "Number of cards in hand has changed\n");
-      497:   31:  val = g->deckCount[who];
-      497:   32:  assertTF(val != deckSz, "Number of cards in deck has changed\n");
+      760:   29:  val = g->handCount[who];
+      760:   30:  assertTF(val != handSz, "Number of cards in hand has changed\n");
+      760:   31:  val = g->deckCount[who];
+      760:   32:  assertTF(val != deckSz, "Number of cards in deck has changed\n");
         -:   33:
-      497:   34:  if (failed){
+      760:   34:  if (failed){
     #####:   35:    printf("FAILURE FOUND\n\n");
         -:   36:  }
-      497:   37:  failed = 0;
-      497:   38:  return 0;
+      760:   37:  failed = 0;
+      760:   38:  return 0;
         -:   39:}
         -:   40:
         1:   41:int main(int argc, char *argv[]){
@@ -62,20 +62,20 @@
         1:   57:  volte = rand() % 1000;
         1:   58:  printf("Tests run: %d\n", (volte));
         -:   59:
-      498:   60:  for (runt = 0; runt < volte; runt++){
-      497:   61:    numplayers = rand() % 3 + 2;
-      497:   62:    initializeGame(numplayers, k, randSeed, &g);
-      497:   63:    g.handCount[0] = rand() % 10; // gen random hand count for player i
-     1988:   64:    for (j = 0; j < 3; j++){
-     1491:   65:      choice[j] = rand() % 3 + 1;
-     1491:   66:      choice[j] = 0;
+      761:   60:  for (runt = 0; runt < volte; runt++){
+      760:   61:    numplayers = rand() % 3 + 2;
+      760:   62:    initializeGame(numplayers, k, randSeed, &g);
+      760:   63:    g.handCount[0] = rand() % 10; // gen random hand count for player i
+     3040:   64:    for (j = 0; j < 3; j++){
+     2280:   65:      choice[j] = rand() % 3 + 1;
+     2280:   66:      choice[j] = 0;
         -:   67:    }
-      497:   68:    g.hand[0][0] = smithy;  // set first card for player i, to be smithy
-      497:   69:    handSz = g.handCount[0];
-      497:   70:    deckSz = g.deckCount[0]; 
+      760:   68:    g.hand[0][0] = smithy;  // set first card for player i, to be smithy
+      760:   69:    handSz = g.handCount[0];
+      760:   70:    deckSz = g.deckCount[0]; 
         -:   71:
-      497:   72:    playCard(0, choice[0], choice[1], choice[2], &g);
-      497:   73:    runthru(&g, handSz, deckSz, 0);
+      760:   72:    playCard(0, choice[0], choice[1], choice[2], &g);
+      760:   73:    runthru(&g, handSz, deckSz, 0);
         -:   74:  }
         1:   75:  printf("``smithy`` -- RANDOM TESTING COMPLETE \n");
         1:   76:  checkasserts();

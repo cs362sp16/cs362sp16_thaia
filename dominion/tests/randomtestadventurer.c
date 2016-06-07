@@ -4,6 +4,7 @@
 #include <time.h>
 #include "../dominion.h"
 #include "../rngs.h"
+#include "../interface.h"
 
 // Random Test Adventurer
 
@@ -61,10 +62,6 @@ int main(int argc, char *argv[]){
   else{
     randSeed = rand();
   }
-
-  //numplayers = rand() % 3 + 2;
-  //initializeGame(numplayers, k, randSeed, &g);
-
   volte = rand() % 1000;
   printf("Tests run: %d\n", (volte));
 
@@ -78,13 +75,12 @@ int main(int argc, char *argv[]){
     for (j = 0; j < 3; j++){
       choice[j] = rand() % 3 + 1;
     }
-    //handPos = rand() % g.handCount[i];
     g.hand[0][0] = adventurer;
     deckSz = g.deckCount[0];
     handSz = g.handCount[0];
     nDiscard = g.discardCount[0];
     currcoins = g.coins;
-  
+ 
     playCard(0, choice[0], choice[1], choice[2], &g);
     runthru(&g, handSz, deckSz, currcoins, nDiscard, 0); 
   }

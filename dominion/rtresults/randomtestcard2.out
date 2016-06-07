@@ -1,5 +1,5 @@
 ``smithy`` -- RANDOM TESTS START 
-Tests run: 497
+Tests run: 760
 ``smithy`` -- RANDOM TESTING COMPLETE 
 TESTS COMPLETED
 
@@ -22,6 +22,6 @@ Creating 'randomtestcard2.c.gcov'
 
 GCOV OF DOMINION
 File 'dominion.c'
-Lines executed:30.80% of 565
+Lines executed:23.72% of 565
 Creating 'dominion.c.gcov'
 
