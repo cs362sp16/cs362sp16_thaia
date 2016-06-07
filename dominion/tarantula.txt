@@ -1,0 +1,36 @@
+The Tarantula Process:
+
+Files used to caculate "suspiciousness" were:
+* Makefile
+* randomtestadventurer.c and randomtestadventurer.out
+* randomtestcard1.c and randomtestcard1.out
+* randomtestcard2.c and randomtestcard2.out
+* The corresponsing dominion.c.gov files for each test run
+
+The process for me was long and frustrating for two (main) reasons.
+  1) I realized a little too late that I was parsing unittest files
+  2) Several files needed to be reworked to provide more information
+     to supplement my script
+
+How I found the values of failed(e), passed(e), totalfailed, and totalpassed
+for each of the random tests:
+
+  The process started with parsing the .out files for each of the cards.
+  I randomly generated how many times the tests would run and kept a counter.
+  During the runs, every time a series of assertions failed, an error message
+  would be printed. When all the tests finished running, I parsed the files and
+  incremented a counter every time I found an instance of "FAILURE" in the
+  file.
+
+  From there, I just subtracted the amount of failures from the number
+  of tests run for each card to find out how many passed. The same process was
+  repeated for each of the other cards to calculate the suspiciousness values.
+
+  Results were:
+    * 1 for randomtestcard1.c which tested ``cutpurse`` -- and subsequently
+      broke every time on updateCoins)
+
+    * 0 for randomtestcard2.c which tested ``smithy``, the simplest function
+
+    * 0.0738 for randomtestadventurer.c -- for this card, there was rare
+      failure in which the used card would never be put into the discard pile
