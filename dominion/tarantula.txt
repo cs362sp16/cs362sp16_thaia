@@ -34,3 +34,29 @@ for each of the random tests:
 
     * 0.0738 for randomtestadventurer.c -- for this card, there was rare
       failure in which the used card would never be put into the discard pile
+
+The final output is as shown below:
+```
+  FILE OPENED:  rtresults/randomtestadventurer.out
+  Total tests run for adventurer:  664
+  Passing tests:  652
+  Number of failures in ``adventurer``:  12 
+  
+  FILE OPENED:  rtresults/randomtestcard1.out
+  Total tests run for cutpurse:  314
+  Passing tests:  0
+  Number of failures in ``cutpurse``:  314 
+  
+  FILE OPENED:  rtresults/randomtestcard2.out
+  Total tests run for smithy:  760
+  Passing tests:  760
+  Number of failures in ``smithy``:  0
+  
+  Total passed:  1412
+  Total failed:  326
+  
+  suspicious adventurer:  0.0738313521804
+  suspicious cutpurse:  1.0
+  suspicious smithy:  0.0
+  
+```
