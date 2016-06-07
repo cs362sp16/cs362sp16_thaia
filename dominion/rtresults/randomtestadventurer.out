@@ -1,28 +1,20 @@
 ``adventurer`` -- RANDOM TESTS START 
-Tests run: 718
+Tests run: 497
 FAILED ASSERTION: Card(s) have been discarded
 FAILURE FOUND
 
 FAILED ASSERTION: Card(s) have been discarded
 FAILURE FOUND
 
-FAILED ASSERTION: Card(s) have been discarded
-FAILURE FOUND
-
-FAILED ASSERTION: Card(s) have been discarded
-FAILURE FOUND
-
-FAILED ASSERTION: Card(s) have been discarded
-FAILURE FOUND
-
-FAILED ASSERTION: Card(s) have been discarded
-FAILURE FOUND
-
-FAILED ASSERTION: Card(s) have been discarded
-FAILURE FOUND
-
-FAILED ASSERTION: Number of cards in hand has changed
 FAILED ASSERTION: Number of cards in deck has changed
+FAILURE FOUND
+
+FAILED ASSERTION: Card(s) have been discarded
+FAILURE FOUND
+
+FAILED ASSERTION: Card(s) have been discarded
+FAILURE FOUND
+
 FAILED ASSERTION: Card(s) have been discarded
 FAILURE FOUND
 

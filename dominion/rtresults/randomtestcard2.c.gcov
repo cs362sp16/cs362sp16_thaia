@@ -15,12 +15,12 @@
         -:   10:
         -:   11:int failed = 0;
         -:   12:
-      718:   13:void assertTF(int b, char *msg){
-      718:   14:  if (b == 0){
+      994:   13:void assertTF(int b, char *msg){
+      994:   14:  if (b == 0){
     #####:   15:    printf("FAILED ASSERTION: %s", msg);
     #####:   16:    failed = 1;
         -:   17:  }
-      718:   18:}
+      994:   18:}
         -:   19:
         1:   20:void checkasserts(){
         1:   21:  if (!failed){
@@ -28,88 +28,56 @@
         -:   23:  }
         1:   24:}
         -:   25:
-      718:   26:int runthru(struct gameState *g, int handSz, int who){
+      497:   26:int runthru(struct gameState *g, int handSz, int deckSz, int who){
         -:   27:  int val;
         -:   28:
-      718:   29:  val = g->handCount[who];
-      718:   30:  printf("player: %d\n", who);
-      718:   31:  printf("old hand count: %d\n", handSz);
-      718:   32:  printf("new hand count: %d\n", val);
-      718:   33:  assertTF(val != handSz, "Number of cards in hand has changed\n");
-        -:   34:  //val = g->deckCount[who];
-        -:   35:  //assertTF(val != deckSz, "Number of cards in deck has changed\n");
-        -:   36:  //val = g->coins;
-        -:   37:  //assertTF(val != currcoins, "Number of coins in hand has changed\n");
-        -:   38:  //val = g->discardCount[who];
-        -:   39:  //assertTF(val != nDiscard, "Card(s) have been discarded\n");
+      497:   29:  val = g->handCount[who];
+      497:   30:  assertTF(val != handSz, "Number of cards in hand has changed\n");
+      497:   31:  val = g->deckCount[who];
+      497:   32:  assertTF(val != deckSz, "Number of cards in deck has changed\n");
+        -:   33:
+      497:   34:  if (failed){
+    #####:   35:    printf("FAILURE FOUND\n\n");
+        -:   36:  }
+      497:   37:  failed = 0;
+      497:   38:  return 0;
+        -:   39:}
         -:   40:
-      718:   41:  if (failed){
-    #####:   42:    printf("FAILURE FOUND\n\n");
-        -:   43:  }
-        -:   44:  else{
-      718:   45:    printf("TEST PASSED\n\n");
-        -:   46:  }
+        1:   41:int main(int argc, char *argv[]){
+        -:   42:  int j, numplayers, randSeed, runt, volte, handSz, deckSz;
+        1:   43:  int k[10] = {smithy, adventurer, gardens, embargo, cutpurse, mine, ambassador,
+        -:   44:               outpost, baron, tribute};
+        -:   45:  int choice[4];
+        1:   46:  srand(time(NULL)); // Seed rng
         -:   47:
-      718:   48:  failed = 0;
-      718:   49:  return 0;
-        -:   50:}
+        -:   48:  struct gameState g;
+        -:   49:
+        1:   50:  printf("``smithy`` -- RANDOM TESTS START \n");
         -:   51:
-        1:   52:int main(int argc, char *argv[]){
-        -:   53:  int i, j, numplayers, randSeed, runt, volte, handSz;
-        1:   54:  int k[10] = {smithy, adventurer, gardens, embargo, cutpurse, mine, ambassador,
-        -:   55:               outpost, baron, tribute};
-        -:   56:  int choice[4];
-        1:   57:  srand(time(NULL)); // Seed rng
-        -:   58:
-        -:   59:  struct gameState g;
-        -:   60:
-        1:   61:  printf("``smithy`` -- RANDOM TESTS START \n");
-        -:   62:
-        1:   63:  if (argc >= 2){
-        1:   64:    randSeed = atoi(argv[1]);
-        -:   65:  }else{
-    #####:   66:    randSeed = rand();
-        -:   67:  }
-        -:   68:
-        -:   69:  //numplayers = rand() % 3 + 2;
-        -:   70:  //initializeGame(numplayers, k, randSeed, &g);
+        1:   52:  if (argc >= 2){
+        1:   53:    randSeed = atoi(argv[1]);
+        -:   54:  }else{
+    #####:   55:    randSeed = rand();
+        -:   56:  }
+        1:   57:  volte = rand() % 1000;
+        1:   58:  printf("Tests run: %d\n", (volte));
+        -:   59:
+      498:   60:  for (runt = 0; runt < volte; runt++){
+      497:   61:    numplayers = rand() % 3 + 2;
+      497:   62:    initializeGame(numplayers, k, randSeed, &g);
+      497:   63:    g.handCount[0] = rand() % 10; // gen random hand count for player i
+     1988:   64:    for (j = 0; j < 3; j++){
+     1491:   65:      choice[j] = rand() % 3 + 1;
+     1491:   66:      choice[j] = 0;
+        -:   67:    }
+      497:   68:    g.hand[0][0] = smithy;  // set first card for player i, to be smithy
+      497:   69:    handSz = g.handCount[0];
+      497:   70:    deckSz = g.deckCount[0]; 
         -:   71:
-        1:   72:  volte = rand() % 1000;
-        1:   73:  printf("Tests run: %d\n", (volte));
-        -:   74:
-      719:   75:  for (runt = 0; runt < volte; runt++){
-      718:   76:      numplayers = rand() % 3 + 2;
-      718:   77:      initializeGame(numplayers, k, randSeed, &g);
-        -:   78:    //for (i = 0; i < numplayers; i++){
-        -:   79:      //i = 0;
-      718:   80:      g.handCount[0] = rand() % 10; // gen random hand count for player i
-     2872:   81:      for (j = 0; j < 3; j++){
-     2154:   82:        choice[j] = rand() % 3 + 1;
-     2154:   83:        choice[j] = 0;
-        -:   84:      }
-      718:   85:      g.hand[0][0] = smithy;  // set first card for player i, to be smithy
-      718:   86:      handSz = g.handCount[0];
-      718:   87:      printf("Player's hand before turn\n");
-      718:   88:      printHand(0, &g);
-      718:   89:      printf("Before play: %d\n", handSz);
-        -:   90: 
-        -:   91:      //playCard(handPos, choice1, choice2, choice3, gameState) 
-      718:   92:      playCard(0, choice[0], choice[1], choice[2], &g);
-        -:   93:      //if (g.hand[i][0] == smithy){
-        -:   94:      //playCard(0, 0, 0, 0, &g);
-        -:   95:        //j = cardEffect(smithy, 0, 0, 0, &g, 0, 0);
-        -:   96:        //assertTF(j == 0, "Smithy played\n");
-      718:   97:      printf("After play: %d\n", g.handCount[0]);
-      718:   98:      runthru(&g, handSz, 0);
-      718:   99:      printf("Player's hand after turn\n");
-      718:  100:      printHand(0, &g);
-        -:  101:      //}
-        -:  102:      //else{
-        -:  103:      //  printf("Fuck everything\n");
-        -:  104:      //}
-        -:  105:    //}
-        -:  106:  }
-        1:  107:  printf("``smithy`` -- RANDOM TESTING COMPLETE \n");
-        1:  108:  checkasserts();
-        1:  109:  return 0;
-        -:  110:}
+      497:   72:    playCard(0, choice[0], choice[1], choice[2], &g);
+      497:   73:    runthru(&g, handSz, deckSz, 0);
+        -:   74:  }
+        1:   75:  printf("``smithy`` -- RANDOM TESTING COMPLETE \n");
+        1:   76:  checkasserts();
+        1:   77:  return 0;
+        -:   78:}

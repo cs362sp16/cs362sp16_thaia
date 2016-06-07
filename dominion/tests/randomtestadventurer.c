@@ -44,7 +44,7 @@ int runthru(struct gameState *g, int handSz, int deckSz, int currcoins,
 }
 
 int main(int argc, char *argv[]){
-  int i, j, numplayers, randSeed, runt, volte;
+  int j, numplayers, randSeed, runt, volte;
   int handSz, deckSz, nDiscard, currcoins;
   int k[10] = {smithy, adventurer, gardens, embargo, cutpurse, mine, ambassador,
                outpost, baron, tribute};
@@ -71,22 +71,22 @@ int main(int argc, char *argv[]){
   for (runt = 0; runt < volte; runt++){
     numplayers = rand() % 3 + 2;
     initializeGame(numplayers, k, randSeed, &g);
-      g.deckCount[0] = rand() % MAX_DECK;
-      g.handCount[0] = rand() % MAX_HAND;
-      g.discardCount[i] = rand() % MAX_HAND;
-      // Randomly generating choices to be made
-      for (j = 0; j < 3; j++){
-        choice[j] = rand() % 3 + 1;
-      }
-      //handPos = rand() % g.handCount[i];
-      g.hand[0][0] = adventurer;
-      deckSz = g.deckCount[0];
-      handSz = g.handCount[0];
-      nDiscard = g.discardCount[0];
-      currcoins = g.coins;
+    g.deckCount[0] = rand() % MAX_DECK;
+    g.handCount[0] = rand() % MAX_HAND;
+    g.discardCount[0] = rand() % MAX_HAND;
+    // Randomly generating choices to be made
+    for (j = 0; j < 3; j++){
+      choice[j] = rand() % 3 + 1;
+    }
+    //handPos = rand() % g.handCount[i];
+    g.hand[0][0] = adventurer;
+    deckSz = g.deckCount[0];
+    handSz = g.handCount[0];
+    nDiscard = g.discardCount[0];
+    currcoins = g.coins;
   
-      playCard(0, choice[0], choice[1], choice[2], &g);
-      runthru(&g, handSz, deckSz, currcoins, nDiscard, 0); 
+    playCard(0, choice[0], choice[1], choice[2], &g);
+    runthru(&g, handSz, deckSz, currcoins, nDiscard, 0); 
   }
   printf("``adventurer`` -- RANDOM TESTING COMPLETE \n\n");
   checkasserts();

@@ -44,7 +44,7 @@ int runthru(struct gameState *g, int handSz, int deckSz, int currcoins,
 }
 
 int main(int argc, char *argv[]){
-  int i, j, numplayers, randSeed, runt, volte;
+  int j, numplayers, randSeed, runt, volte;
   int handSz, deckSz, nDiscard, currcoins;
   int k[10] = {smithy, adventurer, gardens, embargo, cutpurse, mine, ambassador,
                outpost, baron, tribute};
@@ -60,34 +60,27 @@ int main(int argc, char *argv[]){
   }else{
     randSeed = rand();
   }
-
-  //numplayers = rand() % 3 + 2;
-  //initializeGame(numplayers, k, randSeed, &g);
-
   volte = rand() % 1000;
   printf("Tests run: %d\n", (volte));
 
   for (runt = 0; runt < volte; runt++){
-      numplayers = rand() % 3 + 2;
-      initializeGame(numplayers, k, randSeed, &g);
-    //for (i = 0; i < numplayers; i++){
-      g.deckCount[0] = rand() % MAX_DECK;
-      g.handCount[0] = rand() % MAX_HAND;
-      g.discardCount[0] = rand() % MAX_HAND;
-      // Inner loop randomly generates choices from 1-3 for function cardEffect
-      for (j = 0; j < 3; j++){
-        choice[j] = rand() % 3 + 1;
-      }
-      //handPos = rand() % g.handCount[i];
-      g.hand[0][0] = cutpurse;
-      deckSz = g.deckCount[0];
-      handSz = g.handCount[0];
-      nDiscard = g.discardCount[0];
-      currcoins = g.coins;
+    numplayers = rand() % 3 + 2;
+    initializeGame(numplayers, k, randSeed, &g);
+    g.deckCount[0] = rand() % MAX_DECK;
+    g.handCount[0] = rand() % MAX_HAND;
+    g.discardCount[0] = rand() % MAX_HAND;
+    // Inner loop randomly generates choices from 1-3 for function cardEffect
+    for (j = 0; j < 3; j++){
+      choice[j] = rand() % 3 + 1;
+    }
+    g.hand[0][0] = cutpurse;
+    deckSz = g.deckCount[0];
+    handSz = g.handCount[0];
+    nDiscard = g.discardCount[0];
+    currcoins = g.coins;
   
-      playCard(0, choice[0], choice[1], choice[2], &g);
-      runthru(&g, handSz, deckSz, currcoins, nDiscard, 0);
-    //}
+    playCard(0, choice[0], choice[1], choice[2], &g);
+    runthru(&g, handSz, deckSz, currcoins, nDiscard, 0);
   }
   printf("``cutpurse`` -- RANDOM TESTING COMPLETE \n");
   checkasserts();
