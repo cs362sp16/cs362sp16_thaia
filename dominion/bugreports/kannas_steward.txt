@@ -1,0 +1,24 @@
+The unit test for the card ``steward`` fails.
+
+The resulting error message when printing coverage results was:
+```
+  ...
+
+  coins b: 5
+  FAILED ASSERTION: Add 2 coins
+  
+  coins a: 5
+  FAILED ASSERTION: Trash 2 cards
+  
+  GCOV AFTER 7 TESTS
+  Testing: cardtest3.c
+  File 'dominion.c'
+  Lines executed:36.67% of 559
+  Creating 'dominion.c.gcov'
+
+  ...
+
+```
+
+From this, it can be gleaned that what's causing ``steward`` to fail the unit
+test has to do with updating coins and discarding from the hand.
