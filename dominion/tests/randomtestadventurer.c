@@ -76,7 +76,7 @@ int main(int argc, char *argv[]){
       g.discardCount[i] = rand() % MAX_HAND;
       // Randomly generating choices to be made
       for (j = 0; j < 3; j++){
-        choice[j] = rand() % 2 + 1;
+        choice[j] = rand() % 3 + 1;
       }
       //handPos = rand() % g.handCount[i];
       g.hand[0][0] = adventurer;

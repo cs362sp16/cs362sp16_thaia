@@ -78,10 +78,10 @@ int main(int argc, char *argv[]){
     //for (i = 0; i < numplayers; i++){
       //i = 0;
       g.handCount[0] = rand() % 10; // gen random hand count for player i
-      /*for (j = 0; j < 3; j++){
+      for (j = 0; j < 3; j++){
         choice[j] = rand() % 3 + 1;
         choice[j] = 0;
-      }*/
+      }
       g.hand[0][0] = smithy;  // set first card for player i, to be smithy
       handSz = g.handCount[0];
       printf("Player's hand before turn\n");
@@ -89,9 +89,9 @@ int main(int argc, char *argv[]){
       printf("Before play: %d\n", handSz);
  
       //playCard(handPos, choice1, choice2, choice3, gameState) 
-      //playCard(i, choice[0], choice[1], choice[2], &g);
+      playCard(0, choice[0], choice[1], choice[2], &g);
       //if (g.hand[i][0] == smithy){
-      playCard(0, 0, 0, 0, &g);
+      //playCard(0, 0, 0, 0, &g);
         //j = cardEffect(smithy, 0, 0, 0, &g, 0, 0);
         //assertTF(j == 0, "Smithy played\n");
       printf("After play: %d\n", g.handCount[0]);

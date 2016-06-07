@@ -14,12 +14,12 @@
         -:    9:
         -:   10:int failed = 0;
         -:   11:
-     3756:   12:void assertTF(int b, char *msg){
-     3756:   13:  if (b == 0){
-     3752:   14:    printf("FAILED ASSERTION: %s", msg);
-     3752:   15:    failed = 1;
+     2872:   12:void assertTF(int b, char *msg){
+     2872:   13:  if (b == 0){
+       10:   14:    printf("FAILED ASSERTION: %s", msg);
+       10:   15:    failed = 1;
         -:   16:  }
-     3756:   17:}
+     2872:   17:}
         -:   18:
         1:   19:void checkasserts(){
         1:   20:  if (!failed){
@@ -27,25 +27,25 @@
         -:   22:  }
         1:   23:}
         -:   24:
-      939:   25:int runthru(struct gameState *g, int handSz, int deckSz, int currcoins,
+      718:   25:int runthru(struct gameState *g, int handSz, int deckSz, int currcoins,
         -:   26:            int nDiscard, int who){
         -:   27:  int val;
         -:   28:
-      939:   29:  val = g->handCount[who];
-      939:   30:  assertTF(val != handSz, "Number of cards in hand has changed\n");
-      939:   31:  val = g->deckCount[who];
-      939:   32:  assertTF(val != deckSz, "Number of cards in deck has changed\n");
-      939:   33:  val = g->coins;
-      939:   34:  assertTF(val != currcoins, "Number of coins in hand has changed\n");
-      939:   35:  val = g->discardCount[who];
-      939:   36:  assertTF(val != nDiscard, "Card(s) have been discarded\n");
+      718:   29:  val = g->handCount[who];
+      718:   30:  assertTF(val != handSz, "Number of cards in hand has changed\n");
+      718:   31:  val = g->deckCount[who];
+      718:   32:  assertTF(val != deckSz, "Number of cards in deck has changed\n");
+      718:   33:  val = g->coins;
+      718:   34:  assertTF(val != currcoins, "Number of coins in hand has changed\n");
+      718:   35:  val = g->discardCount[who];
+      718:   36:  assertTF(val != nDiscard, "Card(s) have been discarded\n");
         -:   37:
-      939:   38:  if (failed){
-      938:   39:    printf("FAILURE FOUND\n\n");
+      718:   38:  if (failed){
+        8:   39:    printf("FAILURE FOUND\n\n");
         -:   40:  }
         -:   41:
-      939:   42:  failed = 0;
-      939:   43:  return 0;
+      718:   42:  failed = 0;
+      718:   43:  return 0;
         -:   44:}
         -:   45:
         1:   46:int main(int argc, char *argv[]){
@@ -67,31 +67,31 @@
     #####:   62:    randSeed = rand();
         -:   63:  }
         -:   64:
-        1:   65:  numplayers = rand() % 3 + 2;
-        1:   66:  initializeGame(numplayers, k, randSeed, &g);
+        -:   65:  //numplayers = rand() % 3 + 2;
+        -:   66:  //initializeGame(numplayers, k, randSeed, &g);
         -:   67:
         1:   68:  volte = rand() % 1000;
-        1:   69:  printf("Tests run: %d", volte);
+        1:   69:  printf("Tests run: %d\n", (volte));
         -:   70:
-      314:   71:  for (runt = 0; runt < volte; runt++){
-     1252:   72:    for (i = 0; i < numplayers; i++){
-      939:   73:      g.deckCount[i] = rand() % MAX_DECK;
-      939:   74:      g.handCount[i] = rand() % MAX_HAND;
-      939:   75:      g.discardCount[i] = rand() % MAX_HAND;
-        -:   76:      // Randomly generating choices to be made
-     3756:   77:      for (j = 0; j < 3; j++){
-     2817:   78:        choice[j] = rand() % 2 + 1;
-        -:   79:      }
-        -:   80:      //handPos = rand() % g.handCount[i];
-      939:   81:      g.hand[0][0] = adventurer;
-      939:   82:      deckSz = g.deckCount[i];
-      939:   83:      handSz = g.handCount[i];
-      939:   84:      nDiscard = g.discardCount[i];
-      939:   85:      currcoins = g.coins;
-        -:   86:  
-      939:   87:      playCard(0, choice[0], choice[1], choice[2], &g);
-      939:   88:      runthru(&g, handSz, deckSz, currcoins, nDiscard, i); 
-        -:   89:    }
+      719:   71:  for (runt = 0; runt < volte; runt++){
+      718:   72:    numplayers = rand() % 3 + 2;
+      718:   73:    initializeGame(numplayers, k, randSeed, &g);
+      718:   74:      g.deckCount[0] = rand() % MAX_DECK;
+      718:   75:      g.handCount[0] = rand() % MAX_HAND;
+      718:   76:      g.discardCount[i] = rand() % MAX_HAND;
+        -:   77:      // Randomly generating choices to be made
+     2872:   78:      for (j = 0; j < 3; j++){
+     2154:   79:        choice[j] = rand() % 3 + 1;
+        -:   80:      }
+        -:   81:      //handPos = rand() % g.handCount[i];
+      718:   82:      g.hand[0][0] = adventurer;
+      718:   83:      deckSz = g.deckCount[0];
+      718:   84:      handSz = g.handCount[0];
+      718:   85:      nDiscard = g.discardCount[0];
+      718:   86:      currcoins = g.coins;
+        -:   87:  
+      718:   88:      playCard(0, choice[0], choice[1], choice[2], &g);
+      718:   89:      runthru(&g, handSz, deckSz, currcoins, nDiscard, 0); 
         -:   90:  }
         1:   91:  printf("``adventurer`` -- RANDOM TESTING COMPLETE \n\n");
         1:   92:  checkasserts();
